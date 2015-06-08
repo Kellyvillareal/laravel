@@ -12,8 +12,10 @@
 </head>
 
 <header class="row visible-lg ">
-	
-			<div class=" col-lg-5 logo container">
+	<div class=" col-lg-1 logo container">
+		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+	</div>
+			<div class=" col-lg-4 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
 		<div class="col-lg-7 container  titu">
@@ -24,8 +26,10 @@
 
 	</header>
 	<header class="row visible-md ">
-	
-			<div class=" col-md-4 logo container">
+	<div class=" col-md-1 logo container">
+		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+	</div>
+			<div class=" col-md-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
 		<div class="col-md-8 container  titu">
@@ -35,8 +39,10 @@
 </div>
 	</header>
 		<header class="row visible-sm ">
-	
-			<div class=" col-sm-3 logo container">
+	<div class=" col-sm-1 logo container">
+		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+	</div>
+			<div class=" col-sm-2 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
 		<div class="col-sm-9 container  titu">
@@ -46,8 +52,10 @@
 </div>
 	</header>
 		<header class="row visible-xs">
-	
-			<div class=" col-xs-2 logo container">
+	<div class=" col-xs-1 logo container">
+		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+	</div>
+			<div class=" col-xs-1 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
 		<div class="col-xs-10 container titu">
