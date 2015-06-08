@@ -65,21 +65,22 @@
 <div class="container-fluid">
  
 <div class="col-md-3"></div>
-<form class="col-md-6 color" style="margin-top:10px;" >
+<div class="col-md-6">
+<form class=" color" style="margin-top:30px;" >
 	
 <table class="actua">
 	<tr>
 		<td>
-		<select class="form-control" style="width:89%;">
+		<select class="form-control" style="margin-top:20%;">
 			<option value="">Asignatura</option>
 			<option value="">Matematica</option>
 			<option value="">Sociales</option>
 		</select>
 </td>
 
-<td class="col"></td>
+<td class="col1"></td>
 		<td>
-	 <select class="form-control">
+	 <select class="form-control" style="margin-top:20%;">
 			<option value="">Profesor</option>
 			<option value="">XXXXXXX</option>
 			<option value="">CCCC</option>
@@ -89,7 +90,7 @@
 
 	<tr>
 		<td>
-	<select class="form-control" style="width:89%; margin-top:-1%;">
+	<select class="form-control" style="margin-top:-10%;">
  	 	 	 	<option value="">Grado</option>
  	 	 	 	<option value="1">1</option>
  	 	 	 	<option value="2">2</option>
@@ -105,19 +106,19 @@
  	 	 	 </select>	
 		</td>
 
-		<td class="col"></td>
+		<td class="col1"></td>
 		
 		<td>
-				<div class="" style="margin-top:40%; background:#2D3E50; color:white; height:32px; border-radius:0.2em;">
+				<div class="" style="margin-top:55%; margin-left: 40%; width:120%; background:#2D3E50; color:white; height:32px; border-radius:0.2em;">
  <label style="color:white; font-weight:normal; margin-top:5px; margin-left:15px;"> Grupo </label>
  </div>	
- <label class="checkbox" style="margin-left:10%;">
+ <label class="checkbox" style="margin-left:55%;">
   <input type="checkbox" id="checkboxEnLinea1" value="opcion_1"> 1
 </label>
-<label class="checkbox" style="margin-left:10%;">
+<label class="checkbox" style="margin-left:55%;">
   <input type="checkbox" id="checkboxEnLinea2" value="opcion_2"> 2
 </label>
-<label class="checkbox" style="margin-left:10%;">
+<label class="checkbox" style="margin-left:55%;">
   <input type="checkbox" id="checkboxEnLinea3" value="opcion_3"> 3
 </label>
  	 
@@ -125,8 +126,9 @@
 	
 </table>
 
-<center><button type="submit" class="btn btn-primary form-control regis" style="margin-left:20px;">Actualizar</button><button type="submit" class="btn btn-primary form-control regis" style="margin-left:50px;">Eliminar</button></center>
+<center><button type="submit" class="btn btn-primary form-control regis" style="margin-bottom:5%;">Asignar</button></center>
 </form>
+</div>
 
 <div class="col-md-3"></div>
 

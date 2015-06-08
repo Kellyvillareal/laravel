@@ -63,7 +63,7 @@
 	<div class="col-md-10">
 			<div class="input-group bus">
          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-         <input type="text" class="form-control" placeholder="Identificacion" required>
+         <input type="text" class="form-control" placeholder="Codigo" required>
            <span class="input-group-addon"><button id="bot">Buscar</button></span>
          </div>
          </div>

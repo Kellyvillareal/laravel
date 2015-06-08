@@ -50,14 +50,29 @@ width: 50%;
 
  	
   }
+  .menu img:hover{
+transform:scale(1.2,1.2) rotate(0deg);
+-moz-transform:scale(1.2,1.2) rotate(0deg);
+-webkit-transform:scale(1.2,1.2) rotate(0deg);
+  }
+
   .color{
     background: white;
     border-radius: 0.5em;
+    width: 100%;
   }
   .color select{
+    width: 120%;
     background: #2D3E50;
     color: white;
+    margin-left: 40%;
+    margin-top: 10%;
   }
+
+  .col1{
+  width: 40%;
+}
+
 
   .color label{
     color: black;
@@ -140,10 +155,16 @@ text-align: left;
 
 }
 
+.busc1{
+    margin-top: 5%;
+    width: 30%;
+
+}
 
 .col{
   width: 20%;
 }
+
 
   .titu{
   	background: #2D3E50;

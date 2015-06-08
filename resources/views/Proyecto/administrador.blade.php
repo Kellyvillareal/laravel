@@ -7,7 +7,7 @@
 <div class="visible-lg visible-md visible-sm" style="height:75px;"></div>
 <div class="visible-xs" style="height:45px;"></div>
 
-<div class="container">
+<div class="container menu">
 	<div class="container-fluid col-xs-4 col-sm-3 col-md-2"><center><a href="{{ url('registraralumno') }}"><img src="Iconos/AgregarAlumno.svg"   width="110" class="img-circle"></a><p><br><strong>Registrar<br/>Alumno<strong></p></center></div>
 	<div class="container-fluid col-xs-4 col-sm-3 col-md-2"><center><a href="{{ url('registrarprofesor') }}"><img src="Iconos/AgregarProfesor.svg"   width="110" class="img-circle"></a><p><br><strong>Registrar<br/>Profesor<strong></p></center></div>
 	<div class="container-fluid col-xs-4 col-sm-3 col-md-2"><center><a href="{{ url('registrarsecretaria') }}"><img src="Iconos/AgregarSecretaria.svg"  width="110"  class="img-circle"></a><p><br><strong>Registrar<br/>secretaria<strong></p></center></div>

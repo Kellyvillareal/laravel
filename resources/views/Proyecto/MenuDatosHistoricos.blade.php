@@ -61,7 +61,7 @@
 
 <div class="visible-lg visible-md visible-sm visible-xs" style="height:150px";></div>
 
-<div class="container-fluid">
+<div class="container-fluid menu">
  
  <div class="col-md-2 col-sm-2"></div>
 	<div class="container-fluid col-xs-4 col-sm-2 col-md-2"><center><a href="exalumnos"><img src="Iconos/Exalumnos.svg" class="img-circle"></a><p><br><strong>Ex Alumnos<strong></p></center></div>

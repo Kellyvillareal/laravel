@@ -58,11 +58,22 @@
 
 
 <body>
+<div class="container-fluid">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+			<div class="input-group busc1">
+         <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+         <input type="text" class="form-control" placeholder="Identificacion" required>
+           <span class="input-group-addon"><button id="bot">Buscar</button></span>
+         </div>
+         </div>
+    <div class="col-md-1"></div>
+         </div>
 
 <div class="container-fluid">
 <div class="col-md-1"></div>
 <div class="col-md-10">
-<table class="table table-responsive baj">
+<table class="table table-responsive ">
 	<tr class="estilotr">
 		<td>Codigo</td>
 		<td>Asignatura</td>

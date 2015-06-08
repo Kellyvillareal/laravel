@@ -62,7 +62,7 @@
 
 <div class="visible-lg visible-md visible-sm visible-xs" style="height:150px";></div>
 
-<div class="container-fluid">
+<div class="container-fluid menu">
  
  <div class="col-md-3 col-sm-3 col-xs-2"></div>
 	<div class="container-fluid col-xs-3 col-sm-3 col-md-3"><center><a href="{{ url('asignaturasasignadas') }}"><img src="Iconos/VerAsignaturasAsignadas.svg" class="img-circle"></a><p><br><strong>Asignaturas Asignadas<strong></p></center></div>

@@ -36,6 +36,10 @@ Route::resource('actualizaralumno','ActualizarAlumnoController');
 Route::resource('actualizarprofesor','ActualizarProfesorController');
 Route::resource('actualizarasignatura','ActualizarAsignaturaController');
 Route::resource('asignarcargas','CargasAcademicasController');
+Route::resource('registrarnotas','RegistrarNotasController');
+Route::resource('listadoalumnos','ListadoAlumnosController');
+Route::resource('notasalumnos','NotasAlumnosController');
+Route::resource('asignaturasprofesor','AsignaturasProfesorController');
 
 Route::get('home', 'HomeController@index');
  
