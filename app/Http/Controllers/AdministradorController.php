@@ -1,4 +1,10 @@
-<?php namespace App\Http\Controllers;
+<?php 
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Contracts\Auth\Guard;
+
+namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -12,6 +18,12 @@ class AdministradorController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+ public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 	public function index()
 	{
 		return view("proyecto.administrador");

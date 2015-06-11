@@ -12,6 +12,9 @@
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
+	
+	
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -25,15 +28,34 @@
 <header class="row visible-lg ">
 	
 			<div class=" col-lg-4 logo container">
-				<img src="Iconos/logo2.svg" align="right">
+				<img src="{{ asset('Iconos/logo2.svg') }}" align="right">
 			</div>
-		<div class="col-lg-8 container  titu ">
+		<div class="col-lg-6 container  titu ">
 		
 		<h1 class="titulo" style="font-size:42px;">Institución Educativa</h1>
 
 </div>
-
+<div class="col-lg-2 logo">
+	<ul class="nav navbar-nav navbar-right">
+					@if (Auth::guest())
+					<li class="dropdown cerr" style="height:75px;">
+							
+						</li>
+					@else
+						<li class="dropdown cerr">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
+							</ul>
+						</li>
+					@endif
+				</ul>
+</div>
 	</header>
+
+
+
+
 	<header class="row visible-md ">
 	
 			<div class="col-md-4 logo container">
@@ -67,9 +89,10 @@
 </div>
 	</header>
 
+
+
+
 <!--
-
-
 	
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -94,7 +117,7 @@
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
@@ -108,8 +131,8 @@
 	@yield('content')
 
 	<!-- Scripts -->
-	<script type="text/javascript" href="{{ asset('js/jquery.min.js') }}"></script>
-	<script type="text/javascript" href="{{ asset('js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 
 </body>
 

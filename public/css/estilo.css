@@ -26,6 +26,16 @@ label{
 
 }
 
+.cerr{
+  width: 100%;
+  background: #2D3E50;
+  margin-left: -20%;
+  margin-top: 10%;
+  height: 61px;
+  font-family: Arial;
+}
+
+
 
 .in{
 	margin-top: 9%;

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::resource('/', 'administradorcontroller');
 
 Route::resource('profesor','ProfesorController');
 Route::resource('secretaria','SecretariaController');
@@ -41,7 +41,7 @@ Route::resource('listadoalumnos','ListadoAlumnosController');
 Route::resource('notasalumnos','NotasAlumnosController');
 Route::resource('asignaturasprofesor','AsignaturasProfesorController');
 
-Route::get('home', 'HomeController@index');
+//Route::get('home', 'HomeController@index');
  
 Route::controllers([
 	'auth' => 'Auth\AuthController',
