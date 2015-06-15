@@ -84,13 +84,22 @@ $this->user->save();
     {
         if ($this->auth->attempt($request->only('usuario', 'password')))
         {
-            return redirect('/administrador');
-    
-       
+ 
+ if($this->auth->user()->tipo=="admin"){
+ return redirect('/administrador');
+ }
+ if($this->auth->user()->tipo=="profesor"){
+ return redirect('profesor');
+ }
+ if($this->auth->user()->tipo=="secre"){
+ return redirect('secretaria');
+ }
+
         }
 
         return redirect('auth/login')->withErrors([
             'usuario' => 'Los datos ingresados son incorrectos, Vuelve a intentarlo',
+
         ]);
     }
 
