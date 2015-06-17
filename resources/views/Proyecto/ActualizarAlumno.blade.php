@@ -22,13 +22,34 @@
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
-		<div class="col-lg-8 container  titu">
+		<div class="col-lg-6 container  titu">
 		
 		<h1 class="titulo">Actualizar Alumno</h1>
 
 </div>
 
+<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
+	<ul class="nav navbar-nav navbar-right">
+					@if (Auth::guest())
+					<li class="dropdown " >
+							
+						</li>
+					@else
+						<li class="dropdown cerr">
+							<a href="#" style="color:grey;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" >
+								<li><a  href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
+							</ul>
+						</li>
+					@endif
+				</ul>
+</div>
+
 	</header>
+
+
+
+
 	<header class="row visible-md ">
 		<div class=" col-md-1 logo container">
 		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
@@ -193,6 +214,10 @@
 
 
 </div>
+
+
+	<script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 </body>
 
  <footer class="footer">

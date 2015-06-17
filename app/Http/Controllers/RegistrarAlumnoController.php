@@ -22,7 +22,7 @@ class RegistrarAlumnoController extends Controller {
 	
 	public function index()
 	{
-		return view("proyecto.RegistrarAlumno");
+	return view("proyecto.RegistrarAlumno");
 	}
 
 	/**
@@ -32,7 +32,7 @@ class RegistrarAlumnoController extends Controller {
 	 */
 	public function create()
 	{
-		//
+			
 	}
 
 	/**
@@ -42,7 +42,7 @@ class RegistrarAlumnoController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		
 	}
 
 	/**

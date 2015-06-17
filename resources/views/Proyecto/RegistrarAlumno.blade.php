@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
 	
@@ -23,10 +23,27 @@
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
-		<div class="col-lg-8 container  titu">
+		<div class="col-lg-6 container  titu">
 		
 		<h1 class="titulo">Registrar Alumno</h1>
 
+</div>
+
+<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
+	<ul class="nav navbar-nav navbar-right">
+					@if (Auth::guest())
+					<li class="dropdown " >
+							
+						</li>
+					@else
+						<li class="dropdown cerr">
+							<a href="#" style="color:grey;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" >
+								<li><a  href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
+							</ul>
+						</li>
+					@endif
+				</ul>
 </div>
 
 	</header>
@@ -77,15 +94,25 @@
  
 <div class="col-md-3"></div>
 
-
 <form class="col-md-6">
 	
+	<!--@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif-->
+
+
 <table>
 	<tr>
 		<td>
 			<div class="input-group   inp">
  	<label >Nombre</label>
- 	<input type="text" class="form-control "  required>
+ 	<input type="text" class="form-control " name="nombre" title="El nombre es obligatorio" required>
  </div>
 </td>
 
@@ -93,7 +120,7 @@
 		<td>
 			 	<div class="input-group   inp">
  	<label >Dirección</label>
- 	<input type="text" class="form-control "  required>
+ 	<input type="text" class="form-control " >
  </div>
 		</td>
 	</tr>
@@ -102,7 +129,7 @@
 		<td>
 				<div class="input-group  inp">
  	<label>Apellido</label>
- 	 	<input type="text" class="form-control "  required> 
+ 	 	<input type="text" class="form-control "  > 
  	 </div>	
 		</td>
 
@@ -111,7 +138,7 @@
 		<td>
 				<div class="input-group  inp">
  	<label>Fecha Nacimiento</label>
- 	 	<input type="date" class="form-control "  required> 
+ 	 	<input type="date" class="form-control "  > 
  	 </div>	
 		</td>
 	</tr>
@@ -120,7 +147,7 @@
 		<td>
 			<div class="input-group  inp">
  	 	<label>Identificacion</label>
- 	 	 	<input type="text" class="form-control "  required>	 
+ 	 	 	<input type="text" class="form-control "  >	 
  	 	 </div>
 		</td>
 
@@ -129,7 +156,20 @@
 		<td>
 				<div class="input-group  inp">
  	 	<label>Grado</label>
- 	 	 	<input type="text" class="form-control "  required>	 
+ 	 	 	<select class="form-control">
+ 	 	 		<option value="">Seleccionar</option>
+ 	 	 		<option value="">1</option>
+ 	 	 		<option value="">2</option>
+ 	 	 		<option value="">3</option>
+ 	 	 		<option value="">4</option>
+ 	 	 		<option value="">5</option>
+ 	 	 		<option value="">6</option>
+ 	 	 		<option value="">7</option>
+ 	 	 		<option value="">8</option>
+ 	 	 		<option value="">9</option>
+ 	 	 		<option value="">10</option>
+ 	 	 		<option value="">11</option>
+ 	 	 	</select>
  	 	 </div>
 		</td>
 	</tr>
@@ -153,7 +193,12 @@
 
  	 	 	<div class="input-group  inp">
  	 	 	<label>Grupo</label>
- 	 	 	 	<input type="text" class="form-control "  required> 
+ 	 	 	<select class="form-control">
+ 	 	 		<option value="">Seleccionar</option>
+ 	 	 		<option value="">1</option>
+ 	 	 		<option value="">2</option>
+ 	 	 		<option value="">3</option>
+ 	 	 	</select>
  	 	 	 </div>	
 		</td>
 	</tr>
@@ -162,7 +207,7 @@
 		<td>
 				 	<div class="input-group inp">
  	 	 	 	<label>Telefono</label>
- 	 	 	 	 	<input type="tel" class="form-control "  required> 
+ 	 	 	 	 	<input type="tel" class="form-control "  > 
  	 	 	 	 </div>
 		</td>
 
@@ -181,6 +226,9 @@
 
 
 </div>
+
+	<script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 </body>
 
  <footer class="footer">

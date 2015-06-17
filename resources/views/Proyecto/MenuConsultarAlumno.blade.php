@@ -21,10 +21,26 @@
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
-		<div class="col-lg-8 container  titu">
+		<div class="col-lg-6 container  titu">
 		
 		<h1 class="titulo">Consultar Alumno</h1>
 
+</div>
+<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
+	<ul class="nav navbar-nav navbar-right">
+					@if (Auth::guest())
+					<li class="dropdown " >
+							
+						</li>
+					@else
+						<li class="dropdown cerr">
+							<a href="#" style="color:grey;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" >
+								<li><a  href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
+							</ul>
+						</li>
+					@endif
+				</ul>
 </div>
 
 	</header>
@@ -80,6 +96,9 @@
 	<div class="container-fluid col-xs-4 col-sm-2 col-md-2"><center><a href="{{ url('informacionalumno') }}"><img src="Iconos/VerInformacion.svg" class="img-circle"></a><p><br><strong>Ver Informacion<strong></p></center></div>	 
 	<div class="col-md-2 col-sm-2"></div>
 </div>
+
+	<script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 </body>
  <footer class="footer">
       

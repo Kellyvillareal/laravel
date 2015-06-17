@@ -35,17 +35,17 @@
 		<h1 class="titulo" style="font-size:42px;">Institución Educativa</h1>
 
 </div>
-<div class="col-lg-2 logo">
+<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-					<li class="dropdown cerr" style="height:75px;">
+					<li class="dropdown " >
 							
 						</li>
 					@else
 						<li class="dropdown cerr">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
+							<a href="#" style="color:grey;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" >
+								<li><a  href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
 							</ul>
 						</li>
 					@endif
@@ -133,7 +133,7 @@
 	<!-- Scripts -->
 	<script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
-
+	
 </body>
 
 

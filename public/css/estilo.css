@@ -27,14 +27,12 @@ label{
 }
 
 .cerr{
-  width: 100%;
-  background: #2D3E50;
-  margin-left: -20%;
-  margin-top: 10%;
-  height: 61px;
+margin-left: -16%;
   font-family: Arial;
-}
+  margin-top: 10%;
 
+
+}
 
 
 .in{

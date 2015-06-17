@@ -4,11 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class profesor extends Model {
 
-	//protected $table='profesors'
-	//protected $primarykey='identificacion';
+	protected $table='profesors';
 
-	//protected $fillable=['nombre','apellido','identificacion','sexo','telefono','direccion','fechanacimiento','estado','titulo'];
-
-    //public $incrementing=false;
+	protected $fillable = ['identificacion','nombre','apellido','sexo','direccion','telefono','direccion','fechanac','titulo','estado','fechavin','fechadesv'];
 
 }
