@@ -40,6 +40,8 @@ Route::resource('registrarnotas','RegistrarNotasController');
 Route::resource('listadoalumnos','ListadoAlumnosController');
 Route::resource('notasalumnos','NotasAlumnosController');
 Route::resource('asignaturasprofesor','AsignaturasProfesorController');
+Route::resource('usuarios','usercontroller');
+Route::resource('prueba','pruebacontroller');
 
 //Route::get('home', 'HomeController@index');
  
@@ -47,3 +49,9 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+/* Rutas para recicbir y guardar los registros */
+Route::resource('datosalumnos','datosalumnocontroller');
+
+
+

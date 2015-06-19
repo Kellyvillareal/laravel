@@ -16,6 +16,7 @@ class CreateAlumnosTable extends Migration {
 		{
 			$table->engine='InnoDB';
 			$table->string('identificacion');
+			$table->primary('identificacion');
 			$table->string('nombre');
 			$table->string('apellido');
 			$table->string('sexo');
@@ -26,7 +27,7 @@ class CreateAlumnosTable extends Migration {
 			$table->date('fechavin');
 			$table->date('fechadesv');
 			$table->timestamps();
-			$table->primary('identificacion');
+			
 		});
 	}
 

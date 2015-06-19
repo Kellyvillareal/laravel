@@ -1,0 +1,214 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body{
+	background: #18BD9B;
+	font-family: Lucida Calligraphy;
+/* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.titulo{
+	
+	color: white;
+
+}
+label{
+  color: white;
+}
+.formulario{
+	border-radius: 1em;
+	background: #FFFFFF;
+}
+.cont{
+	margin-top: 4%;
+
+}
+
+.cerr{
+margin-left: -16%;
+  font-family: Arial;
+  margin-top: 10%;
+
+
+}
+
+
+.in{
+	margin-top: 9%;
+		margin-left: 10%;
+		margin-right: 10%;
+}
+.inp{
+  width: 95%;
+  margin-top: 2%;
+  height: 10%;
+}
+
+.inpu{
+  width: 50%;
+  margin-top: 2%;
+  height: 10%;
+}
+.ingre{
+width: 50%;
+ background: #2D3E50;
+ 	margin-top: 9%;
+
+ 	
+  }
+  .menu img:hover{
+transform:scale(1.2,1.2) rotate(0deg);
+-moz-transform:scale(1.2,1.2) rotate(0deg);
+-webkit-transform:scale(1.2,1.2) rotate(0deg);
+  }
+
+  .color{
+    background: white;
+    border-radius: 0.5em;
+    width: 100%;
+  }
+  .color select{
+    width: 120%;
+    background: #2D3E50;
+    color: white;
+    margin-left: 40%;
+    margin-top: 10%;
+  }
+
+  .col1{
+  width: 40%;
+}
+
+
+  .color label{
+    color: black;
+  }
+
+  .i{
+margin-top: 5%;
+  }
+
+  .i td{
+    text-align: left;
+  }
+
+  .regis{
+width: 25%;
+ background: #2D3E50;
+  margin-top: 2.5%;
+  color: white;
+
+  
+  }
+  td{
+    text-align: center;
+  }
+table{
+  margin-top: 2%;
+
+}
+.baj{
+margin-top: 6%;
+}
+
+.izq{
+
+border: solid #eeeeee 1px;
+margin-top: 4%;
+}
+
+.izq td{
+  text-align: left;
+}
+
+
+.estilotr{
+  background: #2D3E50;
+  color: white;
+}
+.estilotr1{
+  background: #2D3E50;
+  color: white;
+  margin-top: 1%;
+}
+  #bot{
+    border-style: none;
+    background: #eeeeee;
+  }
+
+  #fila{
+    text-align: left;
+  }
+
+.fila1{
+  background: #2D3E50;
+  color: white;
+}
+
+.bus{
+    margin-top: 5%;
+    width: 30%;
+
+}
+.actua td{
+
+text-align: left;
+}
+
+.busc{
+    margin-top: 5%;
+    width: 50%;
+
+}
+
+.busc1{
+    margin-top: 5%;
+    width: 30%;
+
+}
+
+.col{
+  width: 20%;
+}
+
+
+  .titu{
+  	background: #2D3E50;
+
+  }
+
+   .logo{
+    background: #2D3E50;
+ 
+
+  }
+
+p{
+color: white;
+font-weight: 600;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  min-width: 100%;
+  /* Set the fixed height of the footer here */
+  background-color: #2D3E50;
+  text-align: center;
+ 
+  
+}
+
+h5{
+  color: white;
+ font-family: Myriad pro;
+ font-weight: normal;
+	font-size: 10px;
+}
+
+
+h1{
+  font-size: 42px;
+}

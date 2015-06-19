@@ -94,7 +94,7 @@
  
 <div class="col-md-3"></div>
 
-<form class="col-md-6">
+<form class="col-md-6" action="{{ url('registraralumno') }}" methd="POST">
 	
 	<!--@if (count($errors) > 0)
 						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
@@ -105,7 +105,7 @@
 							</ul>
 						</div>
 					@endif-->
-
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 <table>
 	<tr>

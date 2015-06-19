@@ -77,11 +77,10 @@ $this->user->save();
     /**
      * Handle a login request to the application.
      *
-     * @param  LoginRequest  $request
+     * @param  LoginRequest  <1request></1request>
      * @return Response
      */
-    public function postLogin(LoginRequest $request)
-    {
+    public function postLogin(LoginRequest $request){
         if ($this->auth->attempt($request->only('usuario', 'password')))
         {
  
