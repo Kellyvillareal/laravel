@@ -2,8 +2,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\RegistrarSecretariaRequest;
 use Illuminate\Http\Request;
+use DB;
 
 class RegistrarSecretariaController extends Controller {
 
@@ -21,7 +22,8 @@ class RegistrarSecretariaController extends Controller {
 	
 	public function index()
 	{
-		return view("proyecto.RegistrarSecretaria");
+		$mensaje="";
+		return view("proyecto.RegistrarSecretaria")->with('mensaje',$mensaje);
 	}
 
 	/**
@@ -39,10 +41,24 @@ class RegistrarSecretariaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(RegistrarSecretariaRequest $request)
 	{
-		//
+		DB::table('secretarias')->insert(array(
+			array(
+
+				'identificacion'=>$request->identificacion,
+				'nombre' =>$request->nombre,
+				'apellido' =>$request->apellido,
+				'sexo' =>$request->sexo,
+				'direccion'=>$request->direccion,
+				'telefono' =>$request->telefono,
+				'fechanac' =>$request->fechanac,
+				)));
+		$mensaje='secretaria Registrada con exito';
+     return view('proyecto.RegistrarSecretaria')->with('mensaje',$mensaje);
+	
 	}
+	
 
 	/**
 	 * Display the specified resource.

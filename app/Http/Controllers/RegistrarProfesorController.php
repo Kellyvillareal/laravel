@@ -2,8 +2,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\RegistrarProfesorRequest;
 use Illuminate\Http\Request;
+use DB;
 
 class RegistrarProfesorController extends Controller {
 
@@ -20,7 +21,8 @@ class RegistrarProfesorController extends Controller {
 
 	public function index()
 	{
-		return view("proyecto.RegistrarProfesor");
+		$mensaje="";
+		return view("proyecto.RegistrarProfesor")->with('mensaje',$mensaje);
 	}
 
 	/**
@@ -38,9 +40,26 @@ class RegistrarProfesorController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(RegistrarProfesorRequest $request)
 	{
-		//
+		$fecha=date("y/m/d");
+		DB::table('profesors')->insert(array(
+			array(
+
+				'identificacion'=>$request->identificacion,
+				'nombre' =>$request->nombre,
+				'apellido' =>$request->apellido,
+				'sexo' =>$request->sexo,
+				'direccion'=>$request->direccion,
+				'telefono' =>$request->telefono,
+				'fechanac' =>$request->fechanac,
+				'titulo' =>$request->titulo,
+				'estado' =>'activo',
+				'fechavin' =>$fecha,
+				)));
+		$mensaje='Profesor Registrado con exito';
+     return view('proyecto.RegistrarProfesor')->with('mensaje',$mensaje);
+
 	}
 
 	/**

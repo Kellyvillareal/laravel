@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\RegistrarAsignaturaRequest;
 use Illuminate\Http\Request;
 
 class RegistrarAsignaturaController extends Controller {
@@ -23,7 +23,8 @@ class RegistrarAsignaturaController extends Controller {
 	
 	public function index()
 	{
-		return view("proyecto.RegistrarAsignatura");
+			$mensaje="";
+	   return view('proyecto.RegistrarAsignatura')->with('mensaje',$mensaje);
 	}
 
 	/**
@@ -33,7 +34,6 @@ class RegistrarAsignaturaController extends Controller {
 	 */
 	public function create()
 	{
-		//
 	}
 
 	/**
@@ -41,9 +41,10 @@ class RegistrarAsignaturaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+
+		public function store(RegistrarAsignaturaRequest $request){
+$mensaje='Asignatura Registrada con exito';
+     return view('proyecto.RegistrarAsignatura')->with('mensaje',$mensaje);
 	}
 
 	/**

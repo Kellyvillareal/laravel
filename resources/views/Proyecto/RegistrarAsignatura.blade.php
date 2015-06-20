@@ -91,12 +91,30 @@
 <div class="col-md-3"></div>
 
 
-<form class="col-md-6">
+{!! Form::open( [ 'route' => 'registrarasignatura.store', 'class' => 'col-md-6' ] ) !!}
+   
+@if($mensaje!="")
+   <div  class="alert alert-success" style="margin-top:2%; font-family:Calibri;">
+
+<center>{{ $mensaje }}</center>
+							
+	</div>
+@endif
+
+	@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
 	<center>
 <table> 
 			<div class="input-group   inpu" style="text-align:center;">
- 	<label >Nombre</label>
- 	<input type="text" class="form-control "  required>
+ 	 {!!	Form::label('Nombre', 'Nombre') !!}
+ 	{!! Form::text('nombre',null,['class'=>'form-control']) !!}
  </div>
 
 
@@ -106,20 +124,57 @@
 	<tr>
 		
 				<div class="input-group  inpu" style="text-align:center;">
- 	<label>Codigo</label>
- 	 	<input type="text" class="form-control "  required> 
+ 	{!!	Form::label('Codigo', 'Codigo') !!}
+ 	{!! Form::text('codigo',null,['class'=>'form-control']) !!} 
  	 </div>	
 		
 
 		
 	</tr>
 
-	
+	<tr> 
+		<div  style="margin-top:5%;">
+		<p>Grados</p>
+		<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea1" value="opcion_1"> 1
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea2" value="opcion_2"> 2
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea3" value="opcion_3"> 3
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea1" value="opcion_1"> 4
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea2" value="opcion_2"> 5
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea3" value="opcion_3"> 6
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea1" value="opcion_1"> 7
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea2" value="opcion_2"> 8
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea3" value="opcion_3"> 9
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea1" value="opcion_1"> 10
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="checkboxEnLinea2" value="opcion_2"> 11
+</label>
+</div>
+	</tr>
 		
 </table>
 </center>
 <br/>
-<center><button type="submit" class="btn btn-primary form-control regis">Registrar</button></center>
+<center>{!! Form::button('Registrar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis']) !!}</center>
 </form>
 
 <div class="col-md-3"></div>
