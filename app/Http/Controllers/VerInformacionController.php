@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\alumno;
 use Illuminate\Http\Request;
 
 class VerInformacionController extends Controller {
@@ -21,7 +21,8 @@ class VerInformacionController extends Controller {
 	
 	public function index()
 	{
-		return view("proyecto.VerInformacion");
+		$alumnos=alumno::all();
+		return view("proyecto.VerInformacion")->with('alumnos',$alumnos);
 	}
 
 	/**

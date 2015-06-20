@@ -175,6 +175,8 @@
 </table>
 <br/>
 <center><button type="submit" class="btn btn-primary form-control regis">Registrar</button></center>
+
+
 </form>
 
 <div class="col-md-3"></div>

@@ -95,34 +95,38 @@
 <div class="container-fluid">
 <div class="col-md-1"></div>
 <div class="col-md-10">
+@foreach($alumnos as $alumno)
+@if($alumno->nombre=='Alex')
 <table class="table table-responsive izq">
 
 <tr>
-<td>Nombre:</td>
-<td>Direccion:</td>
+<td>Nombre: {{ $alumno->nombre }}</td>
+<td>Direccion: {{ $alumno->direccion }}</td>
 </tr>
 
 <tr  style="background:white;">
-<td>Apellido:</td>
-<td>Fecha Nacimiento:</td>
+<td>Apellido: {{ $alumno->apellido }}</td>
+<td>Fecha Nacimiento: {{ $alumno->fechanac }}</td>
 </tr>
 
 <tr>
-<td>Identificacion:</td>
+<td>Identificacion: {{ $alumno->identificacion }}</td>
 <td>Grado</td>
 </tr>
 
 <tr style="background:white;">
-<td>Sexo:</td>
+<td>Sexo: {{ $alumno->sexo }}</td>
 <td>Curso:</td>
 </tr>
 
 <tr>
-<td>Telefono:</td>
+<td>Telefono: {{ $alumno->telefono }}</td>
 <td></td>
 </tr>
 	
 </table>
+@endif
+@endforeach
 </div>
 <div class="col-md-1"></div>
 </div>
