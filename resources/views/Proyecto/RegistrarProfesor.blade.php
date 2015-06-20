@@ -89,23 +89,41 @@
  
 <div class="col-md-3"></div>
 
+ {!! Form::open( [ 'route' => 'registrarprofesor.store', 'class' => 'col-md-6' ] ) !!}
+   
+@if($mensaje!="")
+   <div  class="alert alert-success" style="margin-top:2%; font-family:Calibri;">
 
-<form class="col-md-6">
+<center>{{ $mensaje }}</center>
+							
+	</div>
+@endif
+
+	@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+
 	
 <table>
 	<tr>
 		<td>
 			<div class="input-group   inp">
- 	<label >Nombre</label>
- 	<input type="text" class="form-control "  required>
+ 		{!!	Form::label('Nombre', 'Nombre') !!}
+ 	{!! Form::text('nombre',null,['class'=>'form-control']) !!}
  </div>
 </td>
 
 <td class="col"></td>
 		<td>
 			 	<div class="input-group   inp">
- 	<label >Telefono</label>
- 	<input type="text" class="form-control "  required>
+ 	<label style="margin-top:5px;">Telefono</label>
+ 	{!! Form::text('telefono',null,['class'=>'form-control']) !!}
  </div>
 		</td>
 	</tr>
@@ -113,8 +131,8 @@
 	<tr>
 		<td>
 				<div class="input-group  inp">
- 	<label>Apellido</label>
- 	 	<input type="text" class="form-control "  required> 
+ {!!	Form::label('Apellido', 'Apellido') !!}
+ 	{!! Form::text('apellido',null,['class'=>'form-control']) !!}
  	 </div>	
 		</td>
 
@@ -122,8 +140,8 @@
 		
 		<td>
 				<div class="input-group  inp">
- 	<label>Dirección</label>
- 	 	<input type="text" class="form-control "  required> 
+ 	{!!	Form::label('Direccion', 'Direccion') !!}
+ 	{!! Form::text('direccion',null,['class'=>'form-control']) !!}
  	 </div>	
 		</td>
 	</tr>
@@ -131,8 +149,8 @@
 	<tr>
 		<td>
 			<div class="input-group  inp">
- 	 	<label>Identificacion</label>
- 	 	 	<input type="text" class="form-control "  required>	 
+ 	 	{!!	Form::label('Identificacion', 'Identificacíon') !!}
+ 	{!! Form::text('identificacion',null,['class'=>'form-control']) !!} 
  	 	 </div>
 		</td>
 
@@ -140,21 +158,17 @@
 		
 		<td>
 				<div class="input-group  inp">
- 	 	<label>Fecha de nacimiento</label>
- 	 	 	<input type="date" class="form-control "  required>	 
+ 	 	{!!	Form::label('Fecha Nacimiento', 'Fecha Nacimiento') !!}
+ 	{!! Form::text('fechanac',null,['class'=>'form-control']) !!} 	 
  	 	 </div>
 		</td>
 	</tr>
 
 	<tr>
 		<td>
-				 	<div class="input-group  inp">
+				 	<div class="input-group  inp sel">
  	 	 	<label>Sexo</label>
- 	 	 	 <select class="form-control">
- 	 	 	 	<option value="">Seleccionar</option>
- 	 	 	 	<option value="Masculino">Masculino</option>
- 	 	 	 	<option value="Femenino">Femenino</option>
- 	 	 	 </select>
+ 	 	 	{!! Form::select('sexo',['Masculino'=>'Masculino','Femenino'=>'Femenino']) !!}
  	 	 	 </div>	
 		</td>
 
@@ -164,8 +178,8 @@
 			
 
  	 	 	<div class="input-group  inp">
- 	 	 	<label>Titulo</label>
- 	 	 	 	<input type="text" class="form-control "  required> 
+ 	 	 	{!!	Form::label('Titulo', 'Titulo') !!}
+ 	{!! Form::text('titulo',null,['class'=>'form-control']) !!}
  	 	 	 </div>	
 		</td>
 	</tr>
@@ -174,8 +188,8 @@
 		
 </table>
 <br/>
-<center><button type="submit" class="btn btn-primary form-control regis">Registrar</button></center>
-</form>
+<center>{!! Form::button('Registrar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis']) !!}</center>
+{!! Form::close( ) !!}
 
 <div class="col-md-3"></div>
 
