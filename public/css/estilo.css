@@ -81,6 +81,12 @@ transform:scale(1.2,1.2) rotate(0deg);
   width: 40%;
 }
 
+.sel select{
+  margin-top: -10px;
+width: 100%;
+height: 75%;
+border-radius: 0.3em;
+}
 
   .color label{
     color: black;

@@ -40,6 +40,9 @@ Route::resource('registrarnotas','RegistrarNotasController');
 Route::resource('listadoalumnos','ListadoAlumnosController');
 Route::resource('notasalumnos','NotasAlumnosController');
 Route::resource('asignaturasprofesor','AsignaturasProfesorController');
+
+
+//rutas de prueba
 Route::resource('usuarios','usercontroller');
 Route::resource('prueba','pruebacontroller');
 

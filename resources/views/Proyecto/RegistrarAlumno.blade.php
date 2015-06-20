@@ -10,6 +10,7 @@
 		<link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/estilo.css') }}" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -94,9 +95,20 @@
  
 <div class="col-md-3"></div>
 
-<form class="col-md-6" action="{{ url('registraralumno') }}" methd="POST">
+
+<!-- Formulario -->
 	
-	<!--@if (count($errors) > 0)
+   {!! Form::open( [ 'route' => 'registraralumno.store', 'class' => 'col-md-6' ] ) !!}
+   
+@if($mensaje!="")
+   <div  class="alert alert-success" style="margin-top:2%; font-family:Calibri;">
+
+<center>{{ $mensaje }}</center>
+							
+	</div>
+@endif
+
+	@if (count($errors) > 0)
 						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
 							<ul>
 								@foreach ($errors->all() as $error)
@@ -104,23 +116,24 @@
 								@endforeach
 							</ul>
 						</div>
-					@endif-->
-<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					@endif
+
 
 <table>
 	<tr>
 		<td>
-			<div class="input-group   inp">
- 	<label >Nombre</label>
- 	<input type="text" class="form-control " name="nombre" title="El nombre es obligatorio" required>
+
+			<div class="input-group  inp">
+ 	{!!	Form::label('Nombre', 'Nombre') !!}
+ 	{!! Form::text('nombre',null,['class'=>'form-control']) !!}
  </div>
 </td>
 
 <td class="col"></td>
 		<td>
 			 	<div class="input-group   inp">
- 	<label >Dirección</label>
- 	<input type="text" class="form-control " >
+ 	{!!	Form::label('Direccion', 'Direccion') !!}
+ 	{!! Form::text('direccion',null,['class'=>'form-control']) !!}
  </div>
 		</td>
 	</tr>
@@ -128,8 +141,8 @@
 	<tr>
 		<td>
 				<div class="input-group  inp">
- 	<label>Apellido</label>
- 	 	<input type="text" class="form-control "  > 
+{!!	Form::label('Apellido', 'Apellido') !!}
+ 	{!! Form::text('apellido',null,['class'=>'form-control']) !!}
  	 </div>	
 		</td>
 
@@ -137,8 +150,8 @@
 		
 		<td>
 				<div class="input-group  inp">
- 	<label>Fecha Nacimiento</label>
- 	 	<input type="date" class="form-control "  > 
+ {!!	Form::label('Fecha Nacimiento', 'Fecha Nacimiento') !!}
+ 	{!! Form::text('fechanac',null,['class'=>'form-control']) !!} 
  	 </div>	
 		</td>
 	</tr>
@@ -146,43 +159,28 @@
 	<tr>
 		<td>
 			<div class="input-group  inp">
- 	 	<label>Identificacion</label>
- 	 	 	<input type="text" class="form-control "  >	 
+ 	 	{!!	Form::label('Identificacion', 'Identificacíon') !!}
+ 	{!! Form::text('identificacion',null,['class'=>'form-control']) !!}
  	 	 </div>
 		</td>
 
 		<td class="col"></td>
 		
 		<td>
-				<div class="input-group  inp">
+				<div class="input-group  inp sel">
  	 	<label>Grado</label>
- 	 	 	<select class="form-control">
- 	 	 		<option value="">Seleccionar</option>
- 	 	 		<option value="">1</option>
- 	 	 		<option value="">2</option>
- 	 	 		<option value="">3</option>
- 	 	 		<option value="">4</option>
- 	 	 		<option value="">5</option>
- 	 	 		<option value="">6</option>
- 	 	 		<option value="">7</option>
- 	 	 		<option value="">8</option>
- 	 	 		<option value="">9</option>
- 	 	 		<option value="">10</option>
- 	 	 		<option value="">11</option>
- 	 	 	</select>
+ 	 	 	 	{!! Form::select('grupo',[1=>'1',2=>'2',3=>'3',4=>'4',5=>'5',6=>'6',7=>'7',8=>'8',9=>'9',10=>'10',11=>'11']) !!}
  	 	 </div>
 		</td>
 	</tr>
 
 	<tr>
 		<td>
-				 	<div class="input-group  inp">
+
+				 	<div class="input-group  inp sel">
  	 	 	<label>Sexo</label>
- 	 	 	 <select class="form-control">
- 	 	 	 	<option value="">Seleccionar</option>
- 	 	 	 	<option value="Masculino">Masculino</option>
- 	 	 	 	<option value="Femenino">Femenino</option>
- 	 	 	 </select>
+ 	 	 	{!! Form::select('sexo',['Masculino'=>'Masculino','Femenino'=>'Femenino']) !!}
+ 
  	 	 	 </div>	
 		</td>
 
@@ -191,14 +189,9 @@
 		<td>
 			
 
- 	 	 	<div class="input-group  inp">
+ 	 	 	<div class="input-group  inp sel">
  	 	 	<label>Grupo</label>
- 	 	 	<select class="form-control">
- 	 	 		<option value="">Seleccionar</option>
- 	 	 		<option value="">1</option>
- 	 	 		<option value="">2</option>
- 	 	 		<option value="">3</option>
- 	 	 	</select>
+ 	 	 	{!! Form::select('grupo',[1=>'1',2=>'2',3=>'3']) !!}
  	 	 	 </div>	
 		</td>
 	</tr>
@@ -206,8 +199,8 @@
 	<tr>
 		<td>
 				 	<div class="input-group inp">
- 	 	 	 	<label>Telefono</label>
- 	 	 	 	 	<input type="tel" class="form-control "  > 
+ 	 	 <label style="margin-top:5px;">Telefono</label>
+ 	{!! Form::text('telefono',null,['class'=>'form-control']) !!}
  	 	 	 	 </div>
 		</td>
 
@@ -219,8 +212,12 @@
 	</tr>
 </table>
 
-<center><button type="submit" class="btn btn-primary form-control regis">Registrar</button></center>
-</form>
+<center> {!! Form::button('Registrar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis']) !!}</center>
+
+
+
+  {!! Form::close( ) !!}
+
 
 <div class="col-md-3"></div>
 

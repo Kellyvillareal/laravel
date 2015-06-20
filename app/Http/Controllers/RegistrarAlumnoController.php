@@ -2,8 +2,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\RegistrarAlumnoRequest;
 use Illuminate\Http\Request;
+use App\alumno;
 
 class RegistrarAlumnoController extends Controller {
 
@@ -22,7 +23,8 @@ class RegistrarAlumnoController extends Controller {
 	
 	public function index()
 	{
-	return view("proyecto.RegistrarAlumno");
+			$mensaje="";
+	   return view('proyecto.RegistrarAlumno')->with('mensaje',$mensaje);
 	}
 
 	/**
@@ -40,9 +42,20 @@ class RegistrarAlumnoController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(RegistrarAlumnoRequest $request)
 	{
-		
+
+	 //$nom=$request->identificacion;
+	//$alumno = alumno::create($request->all());
+	///$alumno = alumno::create([$nom,$request->nombre,$request->apellido,$request->direccion,$request->telefono,$request->fechanac]);
+	
+
+
+
+
+	$mensaje='Alumno Registrado con exito';
+     return view('proyecto.RegistrarAlumno')->with('mensaje',$mensaje);
+
 	}
 
 	/**

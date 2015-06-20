@@ -15,7 +15,7 @@ class usercontroller extends Controller {
 	 */
 	public function index()
 	{
-		//usuarios=User::all();
+		//$usuarios=User::all();
 		$usuarios = User::paginate(2);
 		
 		//return view('proyecto.verusuarios')->with('usuarios',$usuarios);
