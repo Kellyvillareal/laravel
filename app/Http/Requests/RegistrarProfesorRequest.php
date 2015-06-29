@@ -26,7 +26,7 @@ class RegistrarProfesorRequest extends Request {
 		'titulo' => 'required',
         'direccion' => 'required',
         'apellido' => 'required',
-        'identificacion' => 'required|numeric',
+        'identificacion' => 'required|numeric|unique:profesors',
           'telefono' => 'required',
           'fechanac' => 'required|date',
 
@@ -42,6 +42,7 @@ class RegistrarProfesorRequest extends Request {
           'direccion.required' => 'El campo direccion es obligatorio',
           'apellido.required' => 'El campo apellido es obligatorio',
           'identificacion.required' => 'El campo identificación es obligatorio',
+          'identificacion.unique' => 'Ya existe un profesor registrado con esta identificación',
            'identificacion.numeric' => 'La identificacion solo son numeros',
            'telefono.required' => 'El campo telefono es obligatorio',
            'fechanac.required' => 'El campo fecha nacimiento es obligatorio',

@@ -20,7 +20,7 @@ class RegistrarAlumnoRequest extends Request {
         'nombre' => 'required|min:3',
         'direccion' => 'required',
         'apellido' => 'required',
-        'identificacion' => 'required|numeric',
+        'identificacion' => 'required|numeric|unique:alumnos',
           'telefono' => 'required',
           'fechanac' => 'required|date',
     ];
@@ -34,9 +34,11 @@ class RegistrarAlumnoRequest extends Request {
           'apellido.required' => 'El campo apellido es obligatorio',
           'identificacion.required' => 'El campo identificación es obligatorio',
            'identificacion.numeric' => 'La identificacion solo son numeros',
+           'identificacion.unique' => 'Esta identificación ya esta en nuestros registros',
            'telefono.required' => 'El campo telefono es obligatorio',
            'fechanac.required' => 'El campo fecha nacimiento es obligatorio',
            'fechanac.date' => 'Ingrese un formato de fecha valido',
+
         ];
     }
 

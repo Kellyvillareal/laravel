@@ -16,7 +16,7 @@
 
 		<header class="row visible-lg ">
 	<div class=" col-lg-1 logo container">
-		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+		<a href="administrador" >	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
@@ -105,7 +105,7 @@
 						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
 							<ul>
 								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
+									<center>{{ $error }}</center>
 								@endforeach
 							</ul>
 						</div>
@@ -121,52 +121,44 @@
 
 	</tr>
 
-	<tr>
-		
-				<div class="input-group  inpu" style="text-align:center;">
- 	{!!	Form::label('Codigo', 'Codigo') !!}
- 	{!! Form::text('codigo',null,['class'=>'form-control']) !!} 
- 	 </div>	
-		
-
-		
-	</tr>
 
 	<tr> 
 		<div  style="margin-top:5%;">
 		<p>Grados</p>
 		<label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea1" value="opcion_1"> 1
+  {!! Form::checkbox('gra1', 1)  !!} 1
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea2" value="opcion_2"> 2
+  {!! Form::checkbox('gra2', 2)  !!} 2
+  </label>
+<label class="checkbox-inline">
+  {!! Form::checkbox('gra3', 3)  !!} 3
+  </label>
+<label class="checkbox-inline">
+  {!! Form::checkbox('gra4', 4)  !!} 4
+  </label>
+<label class="checkbox-inline">
+  {!! Form::checkbox('gra5', 5)  !!} 5
+  </label>
+<label class="checkbox-inline">
+  {!! Form::checkbox('gra6', 6)  !!} 6
+  </label>
+<label class="checkbox-inline">
+  {!! Form::checkbox('gra7', 7)  !!} 7
+  </label>
+<label class="checkbox-inline">
+  {!! Form::checkbox('gra8', 8)  !!} 8
+  </label>
+<label class="checkbox-inline">
+  {!! Form::checkbox('gra9', 9)  !!} 9
+  </label>
+<label class="checkbox-inline">
+  {!! Form::checkbox('gra10', 10)  !!} 10
+
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea3" value="opcion_3"> 3
-</label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea1" value="opcion_1"> 4
-</label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea2" value="opcion_2"> 5
-</label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea3" value="opcion_3"> 6
-</label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea1" value="opcion_1"> 7
-</label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea2" value="opcion_2"> 8
-</label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea3" value="opcion_3"> 9
-</label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea1" value="opcion_1"> 10
-</label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="checkboxEnLinea2" value="opcion_2"> 11
+  {!! Form::checkbox('gra11', 11)  !!} 11
+
 </label>
 </div>
 	</tr>

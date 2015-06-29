@@ -1,8 +1,12 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\informacionalumnoRequest;
 
+use App\Http\Controllers\Controller;
+use App\alumno;
+use App\curso;
+use App\matricula;
 use Illuminate\Http\Request;
 
 class ActualizarAlumnoController extends Controller {
@@ -20,7 +24,8 @@ class ActualizarAlumnoController extends Controller {
 	
 	public function index()
 	{
-	return view("proyecto.ActualizarAlumno");
+	$alum=NULL;
+	return view("proyecto.ActualizarAlumno",compact('alum'));
 	}
 
 	/**
@@ -38,9 +43,46 @@ class ActualizarAlumnoController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(informacionalumnoRequest $request)
 	{
-		//
+		$alum;
+		$idcurso=0;
+		$grado;
+		$grupo;
+
+$iden=$request->identificacion;
+
+//buscamos el registro que coincida con la indentificacion proporcionada
+$matriculas=matricula::where('idalumno','=',$iden)->get();
+		
+foreach ($matriculas as $matricula) {
+     	$idcurso=$matricula->idcurso;
+     	 }
+ if($idcurso>0){
+//se busca el grado y grupo en el que esta matriculado
+$cursos=curso::where('id','=',$idcurso)->get();
+     foreach ($cursos as $curso) {
+     $grado=$curso->grado;
+     $grupo=$curso->grupo;
+   }
+
+///buscamos toda la informacion del alumno
+   		$alumnos=alumno::where('identificacion','=',$iden)->where('estado','=','Activo')->get();
+
+///guardamos todo en un array
+		foreach ($alumnos as $alumno) {
+$alum=array($alumno->nombre,$alumno->apellido,$alumno->identificacion,$alumno->direccion,$alumno->telefono,$alumno->sexo,
+	        $alumno->fechanac,$grado,$grupo);
+			}
+
+	}
+	else{
+		$alum="No";
+	}
+
+
+	return view("proyecto.ActualizarAlumno",compact('alum'));
+
 	}
 
 	/**
@@ -71,7 +113,7 @@ class ActualizarAlumnoController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
 		//
 	}

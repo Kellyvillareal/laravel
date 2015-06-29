@@ -188,15 +188,9 @@
 		
 </table>
 <br/>
-<<<<<<< HEAD
-<center><button type="submit" class="btn btn-primary form-control regis">Registrar</button></center>
 
-
-</form>
-=======
 <center>{!! Form::button('Registrar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis']) !!}</center>
 {!! Form::close( ) !!}
->>>>>>> 7ae84ad71a6f551190eab598fa1ec5d524ff5808
 
 <div class="col-md-3"></div>
 

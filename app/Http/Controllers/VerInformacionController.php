@@ -3,7 +3,10 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\alumno;
+use App\curso;
+use App\matricula;
 use Illuminate\Http\Request;
+use App\Http\Requests\informacionalumnoRequest;
 
 class VerInformacionController extends Controller {
 
@@ -21,8 +24,9 @@ class VerInformacionController extends Controller {
 	
 	public function index()
 	{
-		$alumnos=alumno::all();
-		return view("proyecto.VerInformacion")->with('alumnos',$alumnos);
+		$alum=NULL;
+		return view("proyecto.VerInformacion")->with('alum',$alum);
+		//return view("proyecto.VerInformacion");
 	}
 
 	/**
@@ -40,9 +44,45 @@ class VerInformacionController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(informacionalumnoRequest $request)
 	{
-		//
+		$alum;
+		$idcurso=0;
+		$grado;
+		$grupo;
+
+$iden=$request->identificacion;
+
+//buscamos el registro que coincida con la indentificacion proporcionada
+$matriculas=matricula::where('idalumno','=',$iden)->get();
+		
+foreach ($matriculas as $matricula) {
+     	$idcurso=$matricula->idcurso;
+     	 }
+ if($idcurso>0){
+//se busca el grado y grupo en el que esta matriculado
+$cursos=curso::where('id','=',$idcurso)->get();
+     foreach ($cursos as $curso) {
+     $grado=$curso->grado;
+     $grupo=$curso->grupo;
+   }
+
+///buscamos toda la informacion del alumno
+   		$alumnos=alumno::where('identificacion','=',$iden)->get();
+
+///guardamos todo en un array
+		foreach ($alumnos as $alumno) {
+$alum=array($alumno->nombre,$alumno->apellido,$alumno->identificacion,$alumno->direccion,$alumno->telefono,$alumno->sexo,
+	        $alumno->fechanac,$grado,$grupo);
+			}
+
+	}
+	else{
+		$alum="No";
+	}
+
+///retornamos a la vista con el array o el mensaje "No"
+	return view("proyecto.VerInformacion")->with('alum',$alum);
 	}
 
 	/**

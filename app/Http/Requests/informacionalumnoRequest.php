@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class RegistrarAsignaturaRequest extends Request {
+class informacionalumnoRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,16 +22,17 @@ class RegistrarAsignaturaRequest extends Request {
 	public function rules()
 	{
 		return [
-			'nombre' => 'required|min:3',
+			'identificacion' => 'required|numeric',
 		];
 	}
 
-
-public function messages(){
+	 public function messages(){
         return [
-           'nombre.required' => 'Debe ingresar el nombre de la asignatura',
-           'nombre.min' => 'El nombre no puede tener menos de 3 caracteres',
-          ];
-          
+
+          'identificacion.required' => 'Debe proporcionar una identificación',
+           'identificacion.numeric' => 'La identificacion solo son numeros',
+    
+        ];
     }
+
 }

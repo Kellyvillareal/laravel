@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Requests\AsignaturaRequest;;
 use App\Http\Controllers\Controller;
-
+use App\asignatura;
+use App\curso;
 use Illuminate\Http\Request;
 
 class ConsultarAsignaturaController extends Controller {
@@ -21,7 +23,14 @@ class ConsultarAsignaturaController extends Controller {
 	
 	public function index()
 	{
-		return view("proyecto.ConsultarAsignatura");
+		$busqueda=NULL;
+		$asignaturas=asignatura::where('estado','=','Activo')->paginate(7);
+		
+		$cursos=curso::all();
+
+
+
+		return view('proyecto.ConsultarAsignatura',compact('asignaturas','cursos','busqueda'));
 	}
 
 	/**
@@ -39,9 +48,15 @@ class ConsultarAsignaturaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(AsignaturaRequest $request)
 	{
-		//
+$asignaturas=asignatura::where('estado','=','Activo')->paginate(7);
+		
+		$nom=$request->nombre;
+$busqueda=asignatura::where('nombre','=',$nom)->get();
+if(count($busqueda)==0){ $busqueda=NULL;}
+	$cursos=curso::all();	
+return view('proyecto.ConsultarAsignatura',compact('busqueda','cursos','asignaturas'));
 	}
 
 	/**

@@ -5,6 +5,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrarAlumnoRequest;
 use Illuminate\Http\Request;
 use App\alumno;
+use App\matricula;
+use App\curso;
+use App\asignatura;
+use App\asigvista;
 use DB;
 
 class RegistrarAlumnoController extends Controller {
@@ -43,53 +47,49 @@ class RegistrarAlumnoController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(RegistrarAlumnoRequest $request)
-	{
+public function store(RegistrarAlumnoRequest $request){
 
-	 //$nom=$request->identificacion;
-	//$alumno = alumno::create($request->all());
-	///$alumno = alumno::create([$nom,$request->nombre,$request->apellido,$request->direccion,$request->telefono,$request->fechanac]);
-	$fecha=date("y/m/d");
-$id=0;
-if($request->grado==1 && $request->grupo==1){$id=1;}if($request->grado==1 && $request->grupo==2){$id=2;}if($request->grado==1 && $request->grupo==3){$id=3;}if($request->grado==2 && $request->grupo==1){$id=4;}if($request->grado==2 && $request->grupo==2){$id=5;}if($request->grado==2 && $request->grupo==3){$id=6;}if($request->grado==3 && $request->grupo==1){$id=7;}if($request->grado==3 && $request->grupo==2){$id=8;}if($request->grado==3 && $request->grupo==3){$id=9;}if($request->grado==4 && $request->grupo==1){$id=10;}if($request->grado==4 && $request->grupo==2){$id=11;}if($request->grado==4 && $request->grupo==3){$id=12;}if($request->grado==5 && $request->grupo==1){$id=13;}if($request->grado==5 && $request->grupo==2){$id=14;}if($request->grado==5 && $request->grupo==3){$id=15;}if($request->grado==6 && $request->grupo==1){$id=16;}if($request->grado==6 && $request->grupo==2){$id=17;}if($request->grado==6 && $request->grupo==3){$id=18;}if($request->grado==7 && $request->grupo==1){$id=19;}if($request->grado==7 && $request->grupo==2){$id=20;}if($request->grado==7 && $request->grupo==3){$id=21;}if($request->grado==8 && $request->grupo==1){$id=22;}if($request->grado==8 && $request->grupo==2){$id=23;}if($request->grado==8 && $request->grupo==3){$id=24;}if($request->grado==9 && $request->grupo==1){$id=25;}if($request->grado==9 && $request->grupo==2){$id=26;}if($request->grado==9 && $request->grupo==3){$id=27;}if($request->grado==10 && $request->grupo==1){$id=28;}if($request->grado==10 && $request->grupo==2){$id=29;}if($request->grado==10 && $request->grupo==3){$id=30;}if($request->grado==11 && $request->grupo==1){$id=31;}if($request->grado==11 && $request->grupo==2){$id=32;}if($request->grado==11 && $request->grupo==3){$id=33;}         
+//La fecha actual para saber que dia se vinculo el estudiante
+$fecha=date("y/m/d");
 
-//$id=\DB::table('cursos')->select('id','grado')->where('grado','=',$request->grado)->where('grupo','=',$request->grupo)->get();
+//buscamos el id del curso al que matricularemos al alumno
+$cursos=curso::where('grado','=',$request->grado)->where('grupo','=',$request->grupo)->get();
+if(count($cursos)==1){ 
+	foreach ($cursos as $curso) {
+	$id=$curso->id;
+}
+}
 
-DB::table('alumnos')->insert(array(
-            array(
-                'identificacion' => $request->identificacion,
-                'nombre' => $request->nombre,
-                'apellido'  =>	$request->apellido,
-                'direccion' => $request->direccion,
-                'telefono' => $request->telefono,
-                'fechanac' => $request->fechanac,
-                'sexo' => $request->sexo,
-                'estado' => 'Activo',
-                'fechavin' => $fecha,
+//insertamos los datos del alumno en la BD
+$InsertarAlumno=alumno::create(['identificacion' => $request->identificacion,'nombre' => $request->nombre, 
+	                           'apellido'=>$request->apellido,'direccion' => $request->direccion,'telefono' => $request->telefono,
+                               'fechanac' => $request->fechanac,'sexo' => $request->sexo,'estado' => 'Activo','fechavin' => $fecha]);
 
-
- 
-            )
-        ));
-
-
-DB::table('matriculas')->insert(array(
-            array(
-                'idcurso' => $id,
-                'idalumno' => $request->identificacion,
-                'estado' => 'Actual',
+//Guardamos los datos de la matricula en la BD                           
+$CrearMatricula=matricula::create(['idcurso'=>$id,'idalumno' => $request->identificacion,'estado' => 'Actual']);
 
 
 
- 
-            )
-        ));
+
+$asigvistas;
+
+//buscamos las asignaturas que pertenezcan al grupo que se matriculo al alumno
+$asignaturas=asignatura::where('idcurso','=',$id)->where('estado','=','Activo')->get();
+
+//le asociamos al alumno las asignaturas que se encuentren en curso en el que se matriculo
+foreach ($asignaturas as $asignatura) {
+	$asigvistas=asigvista::where('codigoasig','=',$asignatura->id)->where('idalumno','=',$request->identificacion)->get();
+if(count($asigvistas)==0){
+	$InsertarAsigantura=asigvista::create(['codigoasig'=>$asignatura->id,'idalumno'=>$request->identificacion,'estado'=>'Actual']);
+}
+}
 
 
 
-	$mensaje='Alumno Registrado con exito';
-     return view('proyecto.RegistrarAlumno')->with('mensaje',$mensaje);
-
+$mensaje='Alumno Registrado con exito';
+   
+//retornamos a la vista con el mensaje de exito
+  return view('proyecto.RegistrarAlumno')->with('mensaje',$mensaje);
 	}
 
 	/**

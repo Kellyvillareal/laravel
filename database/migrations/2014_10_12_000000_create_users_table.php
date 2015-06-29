@@ -20,6 +20,19 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+
+
+        DB::table('users')->insert(array(
+            array(
+                'usuario' => 'admin',
+                'password'  =>  bcrypt('admin'),
+                'tipo' => 'admin'
+
+ 
+            )
+        ));
+
     }
 
     /**
