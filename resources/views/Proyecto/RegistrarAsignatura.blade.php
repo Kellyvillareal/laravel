@@ -64,10 +64,26 @@
 			<div class=" col-sm-2 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
-		<div class="col-sm-9 container  titu">
+		<div class="col-sm-7 container  titu">
 		
 		<h1 class="titulo">Registrar Asignatura</h1>
 
+</div>
+<div class="col-sm-2 " style="height:75px; background:#2D3E50;">
+	<ul class="nav navbar-nav navbar-right">
+					@if (Auth::guest())
+					<li class="dropdown " >
+							
+						</li>
+					@else
+						<li class="dropdown cerr">
+							<a href="#" style="color:grey;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" >
+								<li><a  href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
+							</ul>
+						</li>
+					@endif
+				</ul>
 </div>
 	</header>
 		<header class="row visible-xs">
@@ -77,9 +93,25 @@
 			<div class=" col-xs-1 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
-		<div class="col-xs-10 container titu">
+		<div class="col-xs-8 container titu">
 		
 		<h1 class="titulo">Registrar Asignatura</h1>
+</div>
+<div class="col-xs-2 " style="height:75px; background:#2D3E50;">
+	<ul class="nav navbar-nav navbar-right">
+					@if (Auth::guest())
+					<li class="dropdown " >
+							
+						</li>
+					@else
+						<li class="dropdown cerr">
+							<a href="#" style="color:grey;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" >
+								<li><a  href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
+							</ul>
+						</li>
+					@endif
+				</ul>
 </div>
 	</header>
 
