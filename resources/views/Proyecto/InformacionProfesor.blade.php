@@ -13,7 +13,7 @@
 
 <header class="row visible-lg ">
 	<div class=" col-lg-1 logo container">
-		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+		<a href="consultarprofesor" >	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
@@ -133,40 +133,62 @@
 <body>
 <div class="container-fluid">
 	<div class="col-md-1"></div>
-	<div class="col-md-10">
+	 {!! Form::open( [ 'route' => 'informacionprofesor.store', 'class' => 'col-md-10' ] ) !!}
+   	@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+		
+								@endforeach
+							</ul>
+						</div>
+					@endif
 			<div class="input-group bus">
          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-         <input type="text" class="form-control" placeholder="Identificacion" required>
-           <span class="input-group-addon"><button id="bot">Buscar</button></span>
+       {!! Form::text('identificacion',null,['class'=>'form-control', 'placeholder'=>'Identificacion']) !!}
+         
+           <span class="input-group-addon"> {!! Form::button('Buscar', ['type'=>'submit', 'id'=>'bot']) !!}</span>
          </div>
-         </div>
+
+      {!! Form::close( ) !!}
     <div class="col-md-1"></div>
          </div>
 <div class="container-fluid">
 <div class="col-md-1"></div>
 <div class="col-md-10">
+	 @if($prof!=NULL)
+	 @if($prof=='No')
+  <div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+
+							<center><div class="glyphicon glyphicon-remove"></div> No se encontró informacion relacionada a esa identificación</center>
+							</ul>
+						</div>
+	 @else
 <table class="table table-responsive izq">
 
 <tr>
-<td>Nombre:</td>
-<td>Telefono:</td>
+<td>Nombre: {{ $prof[0] }}</td>
+<td>Telefono: {{ $prof[4] }}:</td>
 </tr>
 
 <tr  style="background:white;">
-<td>Apellido:</td>
-<td>Dirección</td>
+<td>Apellido: {{ $prof[1] }}</td>
+<td>Dirección: {{ $prof[3] }}</td>
 </tr>
 
 <tr>
-<td>Identificacion:</td>
-<td>Fecha Nacimiento</td>
+<td>Identificacion: {{ $prof[2] }}</td>
+<td>Fecha Nacimiento: {{ $prof[6] }}</td>
 </tr>
 
 <tr style="background:white;">
-<td>Sexo:</td>
-<td>Titulo:</td>
+<td>Sexo: {{ $prof[5] }}</td>
+<td>Titulo: {{ $prof[7] }}</td>
 </tr>
-	
+@endif
+	@endif
 </table>
 </div>
 <div class="col-md-1"></div>

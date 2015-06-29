@@ -2,8 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\profesor;
 use Illuminate\Http\Request;
+use App\Http\Requests\informacionalumnoRequest;
+
 
 class VerInformacionPController extends Controller {
 
@@ -23,7 +25,8 @@ class VerInformacionPController extends Controller {
 	
 	public function index()
 	{
-	return view("proyecto.InformacionProfesor");
+		$prof=NULL;
+		return view("proyecto.InformacionProfesor")->with('prof',$prof);
 	}
 
 	/**
@@ -41,9 +44,21 @@ class VerInformacionPController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(informacionalumnoRequest $request)
 	{
-		//
+		//igualamos la variable a mandar como No indicando que no hay nada por el momento
+		$prof='No';
+
+	$iden=$request->identificacion;
+		$info=profesor::where('identificacion','=',$iden)->get();
+
+///si se encontro algo lo guardamos en un array
+foreach ($info as $profesor) {
+$prof=array($profesor->nombre,$profesor->apellido,$profesor->identificacion,$profesor->direccion,$profesor->telefono,$profesor->sexo,$profesor->fechanac,$profesor->titulo);
+		}
+
+///retornamos a la vista con el resultado
+	return view("proyecto.InformacionProfesor")->with('prof',$prof);
 	}
 
 	/**

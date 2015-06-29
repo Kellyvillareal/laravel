@@ -131,50 +131,69 @@
 <body>
 <div class="container-fluid">
 	<div class="col-md-1"></div>
-	<div class="col-md-10">
+   {!! Form::open( [ 'route' => 'informacionalumno.store', 'class' => 'col-md-10' ] ) !!}
+   	@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
 			<div class="input-group bus">
          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-         <input type="text" class="form-control" placeholder="Identificacion" required>
-           <span class="input-group-addon"><button id="bot">Buscar</button></span>
+       {!! Form::text('identificacion',null,['class'=>'form-control', 'placeholder'=>'Identificacion']) !!}
+         
+           <span class="input-group-addon"> {!! Form::button('Buscar', ['type'=>'submit', 'id'=>'bot']) !!}</span>
          </div>
-         </div>
+
+      {!! Form::close( ) !!}
+
     <div class="col-md-1"></div>
          </div>
 <div class="container-fluid">
 <div class="col-md-1"></div>
 <div class="col-md-10">
-@foreach($alumnos as $alumno)
-@if($alumno->nombre=='Alex')
+    @if($alum!=NULL)
+    @if($alum=='No')
+    <div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+
+							<center><div class="glyphicon glyphicon-remove"></div> No se encontró informacion relacionada a esa identificación</center>
+							</ul>
+						</div>
+	@else
 <table class="table table-responsive izq">
 
 <tr>
-<td>Nombre: {{ $alumno->nombre }}</td>
-<td>Direccion: {{ $alumno->direccion }}</td>
+<td>Nombre: {{ $alum[0] }} </td>
+<td>Direccion: {{ $alum[3] }} </td>
 </tr>
 
 <tr  style="background:white;">
-<td>Apellido: {{ $alumno->apellido }}</td>
-<td>Fecha Nacimiento: {{ $alumno->fechanac }}</td>
+<td>Apellido: {{ $alum[1] }}</td>
+<td>Fecha Nacimiento: {{ $alum[6] }} </td>
 </tr>
 
 <tr>
-<td>Identificacion: {{ $alumno->identificacion }}</td>
-<td>Grado</td>
+<td>Identificacion: {{ $alum[2] }}</td>
+<td>Grado: {{ $alum[7] }}</td>
 </tr>
 
 <tr style="background:white;">
-<td>Sexo: {{ $alumno->sexo }}</td>
-<td>Curso:</td>
+<td>Sexo: {{ $alum[5] }}</td>
+<td>Grupo: {{ $alum[8] }}</td>
 </tr>
 
 <tr>
-<td>Telefono: {{ $alumno->telefono }}</td>
+<td>Telefono: {{ $alum[4] }}</td>
 <td></td>
 </tr>
 	
 </table>
 @endif
-@endforeach
+@endif
 </div>
 <div class="col-md-1"></div>
 </div>

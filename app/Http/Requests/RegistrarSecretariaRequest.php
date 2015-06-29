@@ -25,7 +25,7 @@ class RegistrarSecretariaRequest extends Request {
 		'nombre' => 'required|min:3',
         'direccion' => 'required',
         'apellido' => 'required',
-        'identificacion' => 'required|numeric',
+        'identificacion' => 'required|numeric|unique:secretarias',
           'telefono' => 'required',
           'fechanac' => 'required|date',
 
@@ -42,6 +42,7 @@ class RegistrarSecretariaRequest extends Request {
           'apellido.required' => 'El campo apellido es obligatorio',
           'identificacion.required' => 'El campo identificación es obligatorio',
            'identificacion.numeric' => 'La identificacion solo son numeros',
+           'identificacion.unique' => 'Ya existe un registro con esa identificación',
            'telefono.required' => 'El campo telefono es obligatorio',
            'fechanac.required' => 'El campo fecha nacimiento es obligatorio',
            'fechanac.date' => 'Ingrese un formato de fecha valido',

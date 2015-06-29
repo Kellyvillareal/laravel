@@ -150,13 +150,24 @@
 
 <div class="container-fluid">
 	<div class="col-md-3"></div>
-	<div class="col-md-6">
+	{!! Form::open( [ 'route' => 'actualizaralumno.store', 'class' => 'col-md-6' ] ) !!}
+   	@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
 			<div class="input-group busc">
          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-         <input type="text" class="form-control" placeholder="Identificacion" required>
-           <span class="input-group-addon"><button id="bot">Buscar</button></span>
+       {!! Form::text('identificacion',null,['class'=>'form-control', 'placeholder'=>'Identificacion']) !!}
+         
+           <span class="input-group-addon"> {!! Form::button('Buscar', ['type'=>'submit', 'id'=>'bot']) !!}</span>
          </div>
-         </div>
+
+      {!! Form::close( ) !!}
     <div class="col-md-3"></div>
          </div>
 
@@ -166,22 +177,30 @@
 <div class="col-md-3"></div>
 
 
-<form class="col-md-6" style="margin-top:10px;">
-	
+<div class="col-md-6" style="margin-top:10px;">
+	 @if($alum!=NULL)
+	 @if($alum=="No")
+
+<div class="alert-danger">
+	<p>No se econtro información</p>
+</div>
+@else
+
+	 {!! Form::open( [ 'route' => 'actualizaralumno.update'] ) !!}
 <table class="actua">
 	<tr>
 		<td>
 			<div class="input-group inp">
- 	<label >Nombre</label>
- 	<input type="text" class="form-control "  required>
+	{!!	Form::label('Nombre', 'Nombre') !!}
+ 	{!! Form::text('nombre',$alum[0] ,['class'=>'form-control']) !!}
  </div>
 </td>
 
 <td class="col"></td>
 		<td>
 			 	<div class="input-group   inp">
- 	<label >Dirección</label>
- 	<input type="text" class="form-control "  required>
+ {!!	Form::label('Direccion', 'Direccion') !!}
+ 	{!! Form::text('direccion',$alum[3],['class'=>'form-control']) !!}
  </div>
 		</td>
 	</tr>
@@ -189,8 +208,8 @@
 	<tr>
 		<td>
 				<div class="input-group  inp">
- 	<label>Apellido</label>
- 	 	<input type="text" class="form-control "  required> 
+{!!	Form::label('Apellido', 'Apellido') !!}
+ 	{!! Form::text('apellido',$alum[1],['class'=>'form-control']) !!}
  	 </div>	
 		</td>
 
@@ -198,8 +217,8 @@
 		
 		<td>
 				<div class="input-group  inp">
- 	<label>Fecha Nacimiento</label>
- 	 	<input type="date" class="form-control "  required> 
+ {!!	Form::label('Fecha Nacimiento', 'Fecha Nacimiento') !!}
+ 	{!! Form::text('fechanac',$alum[6],['class'=>'form-control']) !!} 
  	 </div>	
 		</td>
 	</tr>
@@ -207,31 +226,26 @@
 	<tr>
 		<td>
 			<div class="input-group  inp">
- 	 	<label>Identificacion</label>
- 	 	 	<input type="text" class="form-control "  required>	 
+ 	 	 	{!!	Form::label('Identificacion', 'Identificacíon') !!}
+ 	{!! Form::text('identificacion',$alum[2],['class'=>'form-control']) !!} 
  	 	 </div>
 		</td>
 
 		<td class="col"></td>
 		
 		<td>
-				<div class="input-group  inp">
- 	 	<label>Grado</label>
- 	 	 	<input type="text" class="form-control "  required>	 
+				<div class="input-group  inp sel">
+<label>Grado</label>
+ 	 	 	 	{!! Form::select('grado',[1=>'1',2=>'2',3=>'3',4=>'4',5=>'5',6=>'6',7=>'7',8=>'8',9=>'9',10=>'10',11=>'11'],$alum[7]) !!} 
  	 	 </div>
 		</td>
 	</tr>
 
 	<tr>
 		<td>
-				 	<div class="input-group  inp">
- 	 	 	<label>Sexo</label>
- 	 	 	 <select class="form-control">
- 	 	 	 	<option value="">Seleccionar</option>
- 	 	 	 	<option value="Masculino">Masculino</option>
- 	 	 	 	<option value="Femenino">Femenino</option>
- 	 	 	 </select>
- 	 	 	 </div>	
+				 	<div class="input-group  inp sel">
+ 	 	 		 	 	<label>Sexo</label>
+ 	 	 	{!! Form::select('sexo',['Masculino'=>'Masculino','Femenino'=>'Femenino'],$alum[5]) !!}
 		</td>
 
 		<td class="col"></td>
@@ -239,9 +253,9 @@
 		<td>
 			
 
- 	 	 	<div class="input-group  inp">
+ 	 	 	<div class="input-group  inp sel">
  	 	 	<label>Grupo</label>
- 	 	 	 	<input type="text" class="form-control "  required> 
+ 	 	 	{!! Form::select('grupo',[1=>'1',2=>'2',3=>'3'],$alum[8]) !!}
  	 	 	 </div>	
 		</td>
 	</tr>
@@ -249,8 +263,8 @@
 	<tr>
 		<td>
 				 	<div class="input-group inp">
- 	 	 	 	<label>Telefono</label>
- 	 	 	 	 	<input type="tel" class="form-control "  required> 
+ 	 	 	 	 <label style="margin-top:5px;">Telefono</label>
+ 	{!! Form::text('telefono',$alum[4],['class'=>'form-control']) !!}
  	 	 	 	 </div>
 		</td>
 
@@ -262,8 +276,14 @@
 	</tr>
 </table>
 
-<center><button type="submit" class="btn btn-primary form-control regis" style="margin-left:20px;">Actualizar</button><button type="submit" class="btn btn-primary form-control regis" style="margin-left:50px;">Eliminar</button></center>
-</form>
+<center>{!! Form::button('Actualizar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis','style'=>'margin-left:20px;']) !!}<button type="submit" class="btn btn-primary form-control regis" style="margin-left:50px;">Eliminar</button></center>
+   
+    {!! Form::close( ) !!}
+
+ @endif
+ @endif
+
+</div>
 
 <div class="col-md-3"></div>
 

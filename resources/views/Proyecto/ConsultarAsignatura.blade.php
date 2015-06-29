@@ -141,19 +141,34 @@
 <body>
 <div class="container-fluid">
 	<div class="col-md-1"></div>
-	<div class="col-md-10">
-			<div class="input-group bus">
+			 {!! Form::open( [ 'route' => 'consultarasignatura.store', 'class' => 'col-md-10' ] ) !!}
+   	@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+		
+								@endforeach
+							</ul>
+						</div>
+					@endif
+			<div class="input-group bus" >
          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-         <input type="text" class="form-control" placeholder="Codigo" required>
-           <span class="input-group-addon"><button id="bot">Buscar</button></span>
+       {!! Form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Nombre']) !!}
+         
+           <span class="input-group-addon"> {!! Form::button('Buscar', ['type'=>'submit', 'id'=>'bot']) !!}</span>
          </div>
-         </div>
+      
+      {!! Form::close( ) !!}
+         
     <div class="col-md-1"></div>
          </div>
 <div class="container-fluid">
 <div class="col-md-1"></div>
 <div class="col-md-10">
-<table class="table table-responsive">
+	@if($busqueda==NULL)
+<table class="table table-responsive table-condensed">
+
 	<tr class="estilotr">
 		<td>Codigo</td>
 		<td>Asignatura</td>
@@ -162,23 +177,67 @@
 		<td>Profesor</td>
 
 	</tr>
+		@foreach($asignaturas as $asignatura)
+
 	<tr>
-		<td>0001</td>
-		<td>Matematica</td>
-		<td>4</td>
-		<td>3</td>
-		<td>XXXXX</td>
+    
+		<td>{{ $asignatura->id }}</td>
+		<td>{{ $asignatura->nombre }}</td>
+		@foreach($cursos as $curso)
+		@if($asignatura->idcurso==$curso->id)
+
+
+		<td>{{ $curso->grado }}</td>
+		<td>{{ $curso->grupo }}</td>
+
+		<!--Profesor que dicta la asignatura-->
+		<td></td>
 
 	</tr>
-	<tr>
-		<td>0001</td>
-		<td>Matematica</td>
-		<td>4</td>
-		<td>3</td>
-		<td>XXXXXX</td>
-
-	</tr>
+@endif
+@endforeach
+@endforeach
 </table>
+
+{!! $asignaturas->setPath('')->render()!!}
+
+@else
+
+<table class="table table-responsive table-condensed">
+
+	<tr class="estilotr">
+		<td>Codigo</td>
+		<td>Asignatura</td>
+		<td>Grado</td>
+		<td>Grupo</td>
+		<td>Profesor</td>
+
+	</tr>
+		@foreach($busqueda as $asignatura)
+
+	<tr>
+    
+		<td>{{ $asignatura->id }}</td>
+		<td>{{ $asignatura->nombre }}</td>
+		@foreach($cursos as $curso)
+		@if($asignatura->idcurso==$curso->id)
+
+
+		<td>{{ $curso->grado }}</td>
+		<td>{{ $curso->grupo }}</td>
+
+		<!--Profesor que dicta la asignatura-->
+		<td></td>
+
+	</tr>
+@endif
+@endforeach
+@endforeach
+</table>
+
+
+
+@endif
 </div>
 <div class="col-md-1"></div>
 </div>

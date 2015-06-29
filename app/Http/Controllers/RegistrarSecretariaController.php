@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrarSecretariaRequest;
 use Illuminate\Http\Request;
 use DB;
+use App\secretaria;
+use App\User;
 
 class RegistrarSecretariaController extends Controller {
 
@@ -43,18 +45,22 @@ class RegistrarSecretariaController extends Controller {
 	 */
 	public function store(RegistrarSecretariaRequest $request)
 	{
-		DB::table('secretarias')->insert(array(
-			array(
+///luego de pasar por las valdaciones del FormRequest insertamos los datos en la BD
+$insertar=secretaria::create(['identificacion'=>$request->identificacion,'nombre' =>$request->nombre,'apellido' =>$request->apellido,
+				              'sexo' =>$request->sexo,'direccion'=>$request->direccion,'telefono' =>$request->telefono,
+				              'fechanac' =>$request->fechanac]);
 
-				'identificacion'=>$request->identificacion,
-				'nombre' =>$request->nombre,
-				'apellido' =>$request->apellido,
-				'sexo' =>$request->sexo,
-				'direccion'=>$request->direccion,
-				'telefono' =>$request->telefono,
-				'fechanac' =>$request->fechanac,
-				)));
-		$mensaje='secretaria Registrada con exito';
+
+///creamos el nuevo usuario en la tabla users
+$aux=rand();
+$usuario=$request->nombre.'_'.$aux;
+//Insertamos un nuevo usuario al sistema
+$crearUser=User::create(['usuario' => $usuario,'password' =>bcrypt($usuario),'tipo' => 'secre']);
+
+
+//retornamos a la vista con mensaje de exito y el usuario y contraseña
+
+		$mensaje='Secretaria Registrada con exito (Usuario:'.$usuario.'  Contraseña: '.$usuario.')';
      return view('proyecto.RegistrarSecretaria')->with('mensaje',$mensaje);
 	
 	}
