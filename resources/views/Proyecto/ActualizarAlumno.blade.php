@@ -16,7 +16,7 @@
 
 		<header class="row visible-lg ">
 			<div class=" col-lg-1 logo container">
-		<a href="administrador" >	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+		<a href="menuactualizaralumno" >	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
 	
 			<div class=" col-lg-3 logo container">
@@ -24,7 +24,7 @@
 			</div>
 		<div class="col-lg-6 container  titu">
 		
-		<h1 class="titulo">Actualizar Alumno</h1>
+		<h1 class="titulo">Modificar Alumno</h1>
 
 </div>
 
@@ -52,7 +52,7 @@
 
 	<header class="row visible-md ">
 		<div class=" col-md-1 logo container">
-		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+		<a href="menuactualizaralumno">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
 	
 			<div class=" col-md-3 logo container">
@@ -60,7 +60,7 @@
 			</div>
 		<div class="col-md-6 container  titu">
 		
-		<h1 class="titulo">Actualizar Alumno</h1>
+		<h1 class="titulo">Modificar Alumno</h1>
 
 </div>
 <div class="col-md-2 " style="height:75px; background:#2D3E50;">
@@ -93,7 +93,7 @@
 			</div>
 		<div class="col-sm-7 container  titu">
 		
-		<h1 class="titulo">Actualizar Alumno</h1>
+		<h1 class="titulo">Modificar Alumno</h1>
 
 </div>
 
@@ -124,7 +124,7 @@
 			</div>
 		<div class="col-xs-8 container titu">
 		
-		<h1 class="titulo">Actualizar Alumno</h1>
+		<h1 class="titulo">Modificar Alumno</h1>
 </div>
 
 <div class="col-xs-2 " style="height:75px; background:#2D3E50;">
@@ -276,7 +276,7 @@
 	</tr>
 </table>
 
-<center>{!! Form::button('Actualizar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis','style'=>'margin-left:20px;']) !!}<button type="submit" class="btn btn-primary form-control regis" style="margin-left:50px;">Eliminar</button></center>
+<center>{!! Form::button('Modificar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis','style'=>'margin-left:20px;']) !!}</button></center>
    
     {!! Form::close( ) !!}
 

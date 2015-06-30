@@ -40,8 +40,10 @@ Route::resource('registrarnotas','RegistrarNotasController');
 Route::resource('listadoalumnos','ListadoAlumnosController');
 Route::resource('notasalumnos','NotasAlumnosController');
 Route::resource('asignaturasprofesor','AsignaturasProfesorController');
-
-
+Route::resource('menuactualizaralumno','menuactualizaralumnoController');
+Route::resource('eliminaralumno','EliminarAlumnoController');
+Route::resource('menuactualizarprofesor','MenuActualizarProfesorController');
+Route::resource('eliminarprofesor','EliminarProfesorController');
 //rutas de prueba
 Route::resource('usuarios','usercontroller');
 Route::resource('prueba','pruebacontroller');

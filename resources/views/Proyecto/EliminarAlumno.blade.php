@@ -15,18 +15,20 @@
 <body>
 
 		<header class="row visible-lg ">
-	<div class=" col-lg-1 logo container">
-		<a href="profesor">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+			<div class=" col-lg-1 logo container">
+		<a href="menuactualizaralumno" >	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
+	
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
 		<div class="col-lg-6 container  titu">
 		
-		<h1 class="titulo">Listado de alumnos</h1>
+		<h1 class="titulo">Eliminar Alumno</h1>
 
 </div>
-<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
+
+<div class="col-lg-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -42,20 +44,26 @@
 					@endif
 				</ul>
 </div>
+
 	</header>
+
+
+
+
 	<header class="row visible-md ">
-	<div class=" col-md-1 logo container">
+		<div class=" col-md-1 logo container">
 		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
+	
 			<div class=" col-md-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
 		<div class="col-md-6 container  titu">
 		
-		<h1 class="titulo">Listado de alumnos</h1>
+		<h1 class="titulo">Eliminar Alumno</h1>
 
 </div>
-<div class="col-md-2 " style="height:75px; background:#2D3E50;">
+<div class="col-md-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -72,6 +80,10 @@
 				</ul>
 </div>
 	</header>
+
+
+
+
 		<header class="row visible-sm ">
 	<div class=" col-sm-1 logo container">
 		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
@@ -81,10 +93,12 @@
 			</div>
 		<div class="col-sm-7 container  titu">
 		
-		<h1 class="titulo">Listado de alumnos</h1>
+		<h1 class="titulo">Eliminar Alumno</h1>
 
 </div>
-<div class="col-sm-2 " style="height:75px; background:#2D3E50;">
+
+
+<div class="col-sm-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -110,9 +124,10 @@
 			</div>
 		<div class="col-xs-8 container titu">
 		
-		<h1 class="titulo">Listado de alumnos</h1>
+		<h1 class="titulo">eliminar Alumno</h1>
 </div>
-<div class="col-xs-2 " style="height:75px; background:#2D3E50;">
+
+<div class="col-xs-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -131,81 +146,150 @@
 	</header>
 
 
-<div class="visible-lg visible-md visible-sm visible-xs" style="height:30px";></div>
+<div class="visible-lg visible-md visible-sm visible-xs" style="height:20px";></div>
+
+<div class="container-fluid">
+	<div class="col-md-3"></div>
+	{!! Form::open( [ 'route' => 'eliminaralumno.store', 'class' => 'col-md-6' ] ) !!}
+   	@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+			<div class="input-group busc">
+         <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+       {!! Form::text('identificacion',null,['class'=>'form-control', 'placeholder'=>'Identificacion']) !!}
+         
+           <span class="input-group-addon"> {!! Form::button('Buscar', ['type'=>'submit', 'id'=>'bot']) !!}</span>
+         </div>
+
+      {!! Form::close( ) !!}
+    <div class="col-md-3"></div>
+         </div>
+
 
 <div class="container-fluid">
  
-<div class="col-md-2"></div>
+<div class="col-md-3"></div>
 
 
-<form class="col-md-8" style="background:; margin-top:1%;">
+<div class="col-md-6" style="margin-top:10px;">
+	 @if($alum!=NULL)
+	 @if($alum=="No")
 
-<table>
+<div class="alert-danger">
+	<p>No se econtro información</p>
+</div>
+@else
+
+	 {!! Form::open( [ 'route' => 'actualizaralumno.update'] ) !!}
+<table class="actua">
 	<tr>
-		<td style="width:20%;">
-			<select class="form-control" style="margin-left:10%;  background:#2d3e50; color:white;">
-				<option value="">Asignatura</option>
-				<option value="">Matematicas</option>
-				<option value="">Sociales</option>
-			</select>
+		<td>
+			<div class="input-group inp">
+	{!!	Form::label('Nombre', 'Nombre') !!}
+ 	{!! Form::text('nombre',$alum[0] ,['class'=>'form-control']) !!}
+ </div>
+</td>
+
+<td class="col"></td>
+		<td>
+			 	<div class="input-group   inp">
+ {!!	Form::label('Direccion', 'Direccion') !!}
+ 	{!! Form::text('direccion',$alum[3],['class'=>'form-control']) !!}
+ </div>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+				<div class="input-group  inp">
+{!!	Form::label('Apellido', 'Apellido') !!}
+ 	{!! Form::text('apellido',$alum[1],['class'=>'form-control']) !!}
+ 	 </div>	
 		</td>
 
-		<td style="width:5%;"></td>
+		<td class="col"></td>
+		
+		<td>
+				<div class="input-group  inp">
+ {!!	Form::label('Fecha Nacimiento', 'Fecha Nacimiento') !!}
+ 	{!! Form::text('fechanac',$alum[6],['class'=>'form-control']) !!} 
+ 	 </div>	
+		</td>
+	</tr>
 
-		<td style="width:20%;">
+	<tr>
+		<td>
+			<div class="input-group  inp">
+ 	 	 	{!!	Form::label('Identificacion', 'Identificacíon') !!}
+ 	{!! Form::text('identificacion',$alum[2],['class'=>'form-control']) !!} 
+ 	 	 </div>
+		</td>
+
+		<td class="col"></td>
+		
+		<td>
+				<div class="input-group  inp sel">
+<label>Grado</label>
+ 	 	 	 	{!! Form::select('grado',[1=>'1',2=>'2',3=>'3',4=>'4',5=>'5',6=>'6',7=>'7',8=>'8',9=>'9',10=>'10',11=>'11'],$alum[7]) !!} 
+ 	 	 </div>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+				 	<div class="input-group  inp sel">
+ 	 	 		 	 	<label>Sexo</label>
+ 	 	 	{!! Form::select('sexo',['Masculino'=>'Masculino','Femenino'=>'Femenino'],$alum[5]) !!}
+		</td>
+
+		<td class="col"></td>
+		
+		<td>
 			
-				<select class="form-control" style="margin-left:10%; background:#2d3e50; color:white;">
-				<option value="">Grado</option>
-				<option value="">6</option>
-				<option value="">7</option>
-				<option value="">8</option>
 
-			</select>
+ 	 	 	<div class="input-group  inp sel">
+ 	 	 	<label>Grupo</label>
+ 	 	 	{!! Form::select('grupo',[1=>'1',2=>'2',3=>'3'],$alum[8]) !!}
+ 	 	 	 </div>	
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+				 	<div class="input-group inp">
+ 	 	 	 	 <label style="margin-top:5px;">Telefono</label>
+ 	{!! Form::text('telefono',$alum[4],['class'=>'form-control']) !!}
+ 	 	 	 	 </div>
 		</td>
 
-		<td style="width:5%;"></td>
-
-		<td style="width:20%;">
-					<select class="form-control" style="margin-left:10%; background:#2d3e50; color:white;">
-				<option value="">Grupo</option>
-				<option value="">1</option>
-				<option value="">2</option>
-				<option value="">3</option>
-
-			</select>
+		<td class="col"></td>
+		
+		<td>
+			
 		</td>
 	</tr>
 </table>
 
-<table class="table" style="margin-top:5%;">
-	<tr class="estilotr">
-	
-		<td>Identificacion</td>
-		<td width="30%">Nombre</td>
-		<td>Telefono</td>
-		<td>Direccion</td>
+<center>{!! Form::button('Eliminar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis','style'=>'margin-left:20px;']) !!}</center>
+   
+    {!! Form::close( ) !!}
 
-	</tr>
-<?php
-for($i=0;$i<7;$i++){
-echo	'<tr>
-		<td>950911311033</td>
-		<td>Alex Benavides</td>
-		<td>3124563453</td>
-		<td>Cll 3 Cra 5</td>
+ @endif
+ @endif
 
-	</tr>';
+</div>
 
-}
-?>
-</table>
-
-</form>
-
-<div class="col-md-2"></div>
+<div class="col-md-3"></div>
 
 
 </div>
+
 
 	<script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
@@ -216,5 +300,6 @@ echo	'<tr>
         <h5 >Copyright © Todos los derechos reservados Kelly Villareal & Alex Benavides</h5>
   
     </footer>
+
 
 </html>

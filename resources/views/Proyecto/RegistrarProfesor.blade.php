@@ -237,16 +237,15 @@
 </table>
 <br/>
 
-<<<<<<< HEAD
+
 
 
 <center>{!! Form::button('Registrar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis']) !!}</center>
 {!! Form::close( ) !!}
 
-=======
-<center>{!! Form::button('Registrar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis']) !!}</center>
-{!! Form::close( ) !!}
->>>>>>> 3478c5728d1b4b938c94673a5ed4aae89f04e837
+
+
+
 
 <div class="col-md-3"></div>
 
