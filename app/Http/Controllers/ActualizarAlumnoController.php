@@ -51,6 +51,8 @@ class ActualizarAlumnoController extends Controller {
 		$grupo;
 
 $iden=$request->identificacion;
+		$alumnos=alumno::where('identificacion','=',$iden)->where('estado','=','Activo')->get();
+ 		if(count($alumnos)>0){
 
 //buscamos el registro que coincida con la indentificacion proporcionada
 $matriculas=matricula::where('idalumno','=',$iden)->get();
@@ -80,7 +82,10 @@ $alum=array($alumno->nombre,$alumno->apellido,$alumno->identificacion,$alumno->d
 		$alum="No";
 	}
 
-
+}
+else{
+	$alum="No";
+}
 	return view("proyecto.ActualizarAlumno",compact('alum'));
 
 	}
@@ -113,7 +118,7 @@ $alum=array($alumno->nombre,$alumno->apellido,$alumno->identificacion,$alumno->d
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update()
+	public function update($id)
 	{
 		//
 	}

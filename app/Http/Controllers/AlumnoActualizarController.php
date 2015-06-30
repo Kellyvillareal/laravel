@@ -1,31 +1,20 @@
 <?php namespace App\Http\Controllers;
-
+use App\Http\Requests\ActualizarRequest;
 use App\Http\Requests;
-use App\Http\Requests\InformacionAlumnoRequest;
 use App\Http\Controllers\Controller;
-use App\profesor;
+use App\Alumno;
 use Illuminate\Http\Request;
 
-class ActualizarProfesorController extends Controller {
+class AlumnoActualizarController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-
-
- public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
-	
 	public function index()
 	{
-		$prof=NULL;
-	return view("proyecto.ActualizarProfesor",compact('prof'));
+		//
 	}
 
 	/**
@@ -43,19 +32,13 @@ class ActualizarProfesorController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(InformacionAlumnoRequest $request)
+	public function store(ActualizarRequest $request)
 	{
-		$prof=profesor::where('identificacion','=',$request->identificacion)->where('estado','=','Activo')->get();
-if(count($prof)>0){
 
-}
-else{
-	$prof="No";
-}
+$consulta=alumno::where('identificacion','=',$request->identificacion1)->update(['nombre'=>$request->nombre1,'apellido'=>$request->apellido1,'sexo'=>$request->sexo1,'direccion'=>$request->direccion1,'telefono'=>$request->telefono1,'fechanac'=>$request->fechanac1]);
 
-
-		return view("proyecto.ActualizarProfesor",compact('prof'));
-
+	$alum="Actualizado";
+	return view("proyecto.ActualizarAlumno",compact('alum'));
 	}
 
 	/**

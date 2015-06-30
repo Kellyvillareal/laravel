@@ -179,6 +179,13 @@
 
 <div class="col-md-6" style="margin-top:10px;">
 	 @if($alum!=NULL)
+
+	  	 @if($alum=="Eliminado")
+	 <div class="alert-success text-center">
+	<p>Alumno Eliminado</p>
+</div>
+	 @else
+
 	 @if($alum=="No")
 
 <div class="alert-danger">
@@ -186,13 +193,13 @@
 </div>
 @else
 
-	 {!! Form::open( [ 'route' => 'actualizaralumno.update'] ) !!}
+	 {!! Form::open( [ 'route' => 'borraralumno.store','readonly'] ) !!}
 <table class="actua">
 	<tr>
 		<td>
 			<div class="input-group inp">
 	{!!	Form::label('Nombre', 'Nombre') !!}
- 	{!! Form::text('nombre',$alum[0] ,['class'=>'form-control']) !!}
+ 	{!! Form::text('nombre1',$alum[0] ,['class'=>'form-control','readonly']) !!}
  </div>
 </td>
 
@@ -200,7 +207,7 @@
 		<td>
 			 	<div class="input-group   inp">
  {!!	Form::label('Direccion', 'Direccion') !!}
- 	{!! Form::text('direccion',$alum[3],['class'=>'form-control']) !!}
+ 	{!! Form::text('direccion1',$alum[3],['class'=>'form-control','readonly']) !!}
  </div>
 		</td>
 	</tr>
@@ -209,7 +216,7 @@
 		<td>
 				<div class="input-group  inp">
 {!!	Form::label('Apellido', 'Apellido') !!}
- 	{!! Form::text('apellido',$alum[1],['class'=>'form-control']) !!}
+ 	{!! Form::text('apellido1',$alum[1],['class'=>'form-control','readonly']) !!}
  	 </div>	
 		</td>
 
@@ -218,7 +225,7 @@
 		<td>
 				<div class="input-group  inp">
  {!!	Form::label('Fecha Nacimiento', 'Fecha Nacimiento') !!}
- 	{!! Form::text('fechanac',$alum[6],['class'=>'form-control']) !!} 
+ 	{!! Form::text('fechanac1',$alum[6],['class'=>'form-control','readonly']) !!} 
  	 </div>	
 		</td>
 	</tr>
@@ -227,7 +234,7 @@
 		<td>
 			<div class="input-group  inp">
  	 	 	{!!	Form::label('Identificacion', 'Identificacíon') !!}
- 	{!! Form::text('identificacion',$alum[2],['class'=>'form-control']) !!} 
+ 	{!! Form::text('identificacion1',$alum[2],['class'=>'form-control','readonly']) !!} 
  	 	 </div>
 		</td>
 
@@ -236,7 +243,7 @@
 		<td>
 				<div class="input-group  inp sel">
 <label>Grado</label>
- 	 	 	 	{!! Form::select('grado',[1=>'1',2=>'2',3=>'3',4=>'4',5=>'5',6=>'6',7=>'7',8=>'8',9=>'9',10=>'10',11=>'11'],$alum[7]) !!} 
+ 	 	 	 		{!! Form::text('grado',$alum[7],['class'=>'form-control','readonly']) !!} 
  	 	 </div>
 		</td>
 	</tr>
@@ -245,7 +252,7 @@
 		<td>
 				 	<div class="input-group  inp sel">
  	 	 		 	 	<label>Sexo</label>
- 	 	 	{!! Form::select('sexo',['Masculino'=>'Masculino','Femenino'=>'Femenino'],$alum[5]) !!}
+ 	 	 		{!! Form::text('sexo',$alum[5],['class'=>'form-control','readonly']) !!} 
 		</td>
 
 		<td class="col"></td>
@@ -255,7 +262,7 @@
 
  	 	 	<div class="input-group  inp sel">
  	 	 	<label>Grupo</label>
- 	 	 	{!! Form::select('grupo',[1=>'1',2=>'2',3=>'3'],$alum[8]) !!}
+ 	 	 	{!! Form::text('grupo',$alum[8],['class'=>'form-control','readonly']) !!} 
  	 	 	 </div>	
 		</td>
 	</tr>
@@ -264,7 +271,7 @@
 		<td>
 				 	<div class="input-group inp">
  	 	 	 	 <label style="margin-top:5px;">Telefono</label>
- 	{!! Form::text('telefono',$alum[4],['class'=>'form-control']) !!}
+	{!! Form::text('telefono1',$alum[4],['class'=>'form-control','readonly']) !!} 
  	 	 	 	 </div>
 		</td>
 
@@ -279,7 +286,7 @@
 <center>{!! Form::button('Eliminar', ['type'=>'submit', 'class'=>'btn btn-primary form-control regis','style'=>'margin-left:20px;']) !!}</center>
    
     {!! Form::close( ) !!}
-
+@endif
  @endif
  @endif
 

@@ -1,31 +1,23 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Requests\InformacionAlumnoRequest;
+use App\Http\Requests\ActualizarRequest;
 use App\Http\Controllers\Controller;
-use App\profesor;
+use App\alumno;
+use App\matricula;
+use App\asigvista;
 use Illuminate\Http\Request;
 
-class ActualizarProfesorController extends Controller {
+class AlumnoEliminarController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-
-
- public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
-	
 	public function index()
 	{
-		$prof=NULL;
-	return view("proyecto.ActualizarProfesor",compact('prof'));
+		//
 	}
 
 	/**
@@ -43,19 +35,16 @@ class ActualizarProfesorController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(InformacionAlumnoRequest $request)
+	public function store(ActualizarRequest $request)
 	{
-		$prof=profesor::where('identificacion','=',$request->identificacion)->where('estado','=','Activo')->get();
-if(count($prof)>0){
-
-}
-else{
-	$prof="No";
-}
-
-
-		return view("proyecto.ActualizarProfesor",compact('prof'));
-
+		$fecha=date("y/m/d");
+	$iden= $request->identificacion1;
+	
+	$eliminaralunmo=alumno::where('identificacion','=',$iden)->update(['estado'=>'Inactivo','fechadesv'=>$fecha]);
+	$eliminarmatricula=matricula::where('idalumno','=',$iden)->update(['estado'=>'Antigua']);
+	$eliminarasigbvistas=asigvista::where('idalumno','=',$iden)->update(['estado'=>'Antigua']);
+	$alum="Eliminado";
+	return view("proyecto.EliminarAlumno",compact('alum'));
 	}
 
 	/**

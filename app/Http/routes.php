@@ -48,6 +48,13 @@ Route::resource('eliminarprofesor','EliminarProfesorController');
 Route::resource('usuarios','usercontroller');
 Route::resource('prueba','pruebacontroller');
 
+
+//Rutas para recibir los datos de eliminar y actualizar
+Route::resource('modificaralumno','AlumnoActualizarController');
+Route::resource('borraralumno','AlumnoEliminarController');
+Route::resource('profesoractualizar','ProfesorActualizarController');
+
+
 //Route::get('home', 'HomeController@index');
  
 Route::controllers([

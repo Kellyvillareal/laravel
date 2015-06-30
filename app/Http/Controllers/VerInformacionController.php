@@ -53,6 +53,11 @@ class VerInformacionController extends Controller {
 
 $iden=$request->identificacion;
 
+$alumnos1=alumno::where('identificacion','=',$iden)->where('estado','=','Activo')->get();
+
+if(count($alumnos1)>0){
+
+
 //buscamos el registro que coincida con la indentificacion proporcionada
 $matriculas=matricula::where('idalumno','=',$iden)->get();
 		
@@ -80,6 +85,11 @@ $alum=array($alumno->nombre,$alumno->apellido,$alumno->identificacion,$alumno->d
 	else{
 		$alum="No";
 	}
+
+}
+else{
+	$alum="No";
+}
 
 ///retornamos a la vista con el array o el mensaje "No"
 	return view("proyecto.VerInformacion")->with('alum',$alum);
