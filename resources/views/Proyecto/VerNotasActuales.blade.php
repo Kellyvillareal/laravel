@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +14,8 @@
 
 <header class="row visible-lg ">
 	<div class=" col-lg-1 logo container">
-		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+		
+		<a href="consultaralumno">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">

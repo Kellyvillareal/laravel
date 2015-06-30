@@ -16,17 +16,17 @@
 
 		<header class="row visible-lg ">
 	<div class=" col-lg-1 logo container">
-		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+		<a href="menuactualizarprofesor" >	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
 		<div class="col-lg-6 container  titu">
 		
-		<h1 class="titulo">Actualizar Profesor</h1>
+		<h1 class="titulo">Modificar Profesor</h1>
 
 </div>
-<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
+<div class="col-lg-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -54,11 +54,11 @@
 			</div>
 		<div class="col-md-6 container  titu">
 		
-		<h1 class="titulo">Actualizar Profesor</h1>
+		<h1 class="titulo">Modificar Profesor</h1>
 
 </div>
 
-<div class="col-md-2 " style="height:75px; background:#2D3E50;">
+<div class="col-md-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -86,11 +86,11 @@
 			</div>
 		<div class="col-sm-7 container  titu">
 		
-		<h1 class="titulo">Actualizar Profesor</h1>
+		<h1 class="titulo">Modificar Profesor</h1>
 
 </div>
 
-<div class="col-sm-2 " style="height:75px; background:#2D3E50;">
+<div class="col-sm-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -119,9 +119,9 @@
 			</div>
 		<div class="col-xs-8 container titu">
 		
-		<h1 class="titulo">Actualizar Profesor</h1>
+		<h1 class="titulo">Modificar Profesor</h1>
 </div>
-<div class="col-xs-2 " style="height:75px; background:#2D3E50;">
+<div class="col-xs-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -242,8 +242,7 @@
 
 </table>
 
-<center><button type="submit" class="btn btn-primary form-control regis" style="margin-left:20px; margin-top:7%;">Actualizar</button><button type="submit" class="btn btn-primary form-control regis" style="margin-left:50px; margin-top:7%;">Eliminar</button></center>
-</form>
+<center><button type="submit" class="btn btn-primary form-control regis" style=" margin-top:5%;">Modificar</button></center>
 
 <div class="col-md-3"></div>
 

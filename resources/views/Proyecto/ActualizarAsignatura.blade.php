@@ -16,7 +16,7 @@
 
 		<header class="row visible-lg ">
 			<div class=" col-lg-1 logo container">
-		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+		<a href="administrador">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
 	
 			<div class=" col-lg-3 logo container">
