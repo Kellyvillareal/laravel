@@ -5,13 +5,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrarAsignaturaRequest;
 use Illuminate\Http\Request;
 use DB;
-<<<<<<< HEAD
-=======
+
 use App\curso;
 use App\asignatura;
 use App\asigvista;
 use App\matricula;
->>>>>>> 3478c5728d1b4b938c94673a5ed4aae89f04e837
+
 class RegistrarAsignaturaController extends Controller {
 
 	/**

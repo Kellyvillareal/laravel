@@ -24,7 +24,7 @@ class ConsultarAsignaturaController extends Controller {
 	public function index()
 	{
 		$busqueda=NULL;
-		$asignaturas=asignatura::where('estado','=','Activo')->paginate(7);
+		$asignaturas=asignatura::where('estado','=','Activo')->paginate(9);
 		
 		$cursos=curso::all();
 
@@ -50,7 +50,7 @@ class ConsultarAsignaturaController extends Controller {
 	 */
 	public function store(AsignaturaRequest $request)
 	{
-$asignaturas=asignatura::where('estado','=','Activo')->paginate(7);
+$asignaturas=asignatura::where('estado','=','Activo')->paginate(9);
 		
 		$nom=$request->nombre;
 $busqueda=asignatura::where('nombre','=',$nom)->get();

@@ -30,12 +30,13 @@
 			<div class=" col-lg-4 logo container">
 				<img src="{{ asset('Iconos/logo2.svg') }}" align="right">
 			</div>
+
 		<div class="col-lg-6 container  titu ">
 		
 		<h1 class="titulo" style="font-size:42px;">Institución Educativa</h1>
 
 </div>
-<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
+<div class="col-lg-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown">
