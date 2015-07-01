@@ -23,7 +23,7 @@
 		<h1 class="titulo">Ex Asignaturas</h1>
 
 </div>
-<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
+<div class="col-lg-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -141,37 +141,79 @@
 <body>
 <div class="container-fluid">
 	<div class="col-md-1"></div>
-	<div class="col-md-10">
-			<div class="input-group bus">
+	 {!! Form::open( [ 'route' => 'exasignaturas.store', 'class' => 'col-md-10' ] ) !!}
+   	@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+		
+								@endforeach
+							</ul>
+						</div>
+					@endif
+			<div class="input-group bus" >
          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-         <input type="text" class="form-control" placeholder="Identificacion" required>
-           <span class="input-group-addon"><button id="bot">Buscar</button></span>
+       {!! Form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Nombre']) !!}
+         
+           <span class="input-group-addon"> {!! Form::button('Buscar', ['type'=>'submit', 'id'=>'bot']) !!}</span>
          </div>
-         </div>
+      
+      {!! Form::close( ) !!}
+         
     <div class="col-md-1"></div>
          </div>
 <div class="container-fluid">
 <div class="col-md-1"></div>
 <div class="col-md-10">
-<table class="table table-responsive">
+	@if($busqueda==NULL)
+<table class="table table-responsive table-condensed">
+
 	<tr class="estilotr">
 		<td>Codigo</td>
 		<td>Nombre</td>
 
+
 	</tr>
+		@foreach($asignaturas as $asignatura)
+
 	<tr>
-		<td>0001</td>
-		<td>Matematica</td>
-
-
-	</tr>
-	<tr>
-		<td>0002</td>
-		<td>Ciencias Sociales</td>
-
+    
+		<td>{{ $asignatura->id }}</td>
+		<td>{{ $asignatura->nombre }}</td>
 
 	</tr>
+
+@endforeach
 </table>
+
+{!! $asignaturas->setPath('')->render()!!}
+
+@else
+
+<table class="table table-responsive table-condensed">
+
+	<tr class="estilotr">
+		<td>Codigo</td>
+		<td>Nombre</td>
+
+
+	</tr>
+		@foreach($busqueda as $asignatura)
+
+	<tr>
+    
+		<td>{{ $asignatura->id }}</td>
+		<td>{{ $asignatura->nombre }}</td>
+
+	</tr>
+
+@endforeach
+</table>
+
+
+
+@endif
 </div>
 <div class="col-md-1"></div>
 </div>

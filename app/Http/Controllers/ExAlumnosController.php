@@ -2,8 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\informacionalumnoRequest;
 use Illuminate\Http\Request;
+use App\alumno;
+use App\asignatura;
 
 class ExAlumnosController extends Controller {
 
@@ -21,7 +23,11 @@ class ExAlumnosController extends Controller {
 	
 	public function index()
 	{
-		return view("proyecto.ExAlumnos");
+				$busqueda=NULL;
+		$alumnos=alumno::where('estado','=','Inactivo')->paginate(8);
+
+
+		return view("proyecto.ExAlumnos",compact('alumnos','busqueda'));
 	}
 
 	/**
@@ -39,9 +45,15 @@ class ExAlumnosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(informacionalumnoRequest $request)
 	{
-		//
+	$alumnos=alumno::where('estado','=','Inactivo')->paginate(8);
+
+		$iden=$request->identificacion;
+$busqueda=alumno::where('identificacion','=',$iden)->where('estado','=','Inactivo')->get();
+if(count($busqueda)==0){ $busqueda=NULL;}
+
+		return view("proyecto.ExAlumnos",compact('alumnos','busqueda'));
 	}
 
 	/**

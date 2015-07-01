@@ -13,7 +13,7 @@
 
 <header class="row visible-lg ">
 	<div class=" col-lg-1 logo container">
-		<a href="consultardatoshistoricos">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+				<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
@@ -23,7 +23,7 @@
 		<h1 class="titulo">Ex alumnos</h1>
 
 </div>
-<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
+<div class="col-lg-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -137,18 +137,31 @@
 <body>
 <div class="container-fluid">
 	<div class="col-md-1"></div>
-	<div class="col-md-10">
-			<div class="input-group bus">
+	 {!! Form::open( [ 'route' => 'exalumnos.store', 'class' => 'col-md-10' ] ) !!}
+   	@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+		
+								@endforeach
+							</ul>
+						</div>
+					@endif
+			<div class="input-group bus" >
          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-         <input type="text" class="form-control" placeholder="Identificacion" required>
-           <span class="input-group-addon"><button id="bot">Buscar</button></span>
+       {!! Form::text('identificacion',null,['class'=>'form-control', 'placeholder'=>'Identificacion']) !!}
+         
+           <span class="input-group-addon"> {!! Form::button('Buscar', ['type'=>'submit', 'id'=>'bot']) !!}</span>
          </div>
-         </div>
+      
+      {!! Form::close( ) !!}
     <div class="col-md-1"></div>
          </div>
 <div class="container-fluid">
 <div class="col-md-1"></div>
 <div class="col-md-10">
+	@if($busqueda==NULL)
 <table class="table table-responsive">
 	<tr class="estilotr">
 		<td>Identificación</td>
@@ -156,21 +169,40 @@
 		<td>Fecha vinculación</td>
 		<td>Fecha desvinculación</td>
 	</tr>
+	@foreach($alumnos as $a)
 	<tr>
-		<td>95091131103</td>
-		<td>Alex Benavides</td>
-		<td>04/02/2005</td>
-		<td>04/02/2008</td>
+		<td>{{ $a->identificacion }}</td>
+		<td> {{ $a->nombre.' '.$a->apellido }}  </td>
+		<td> {{ $a->fechavin }} </td>
+		<td> {{ $a->fechadesv }} </td>
 
 	</tr>
-	<tr>
-		<td>97091331503</td>
-		<td>xxxxxxxxxxxxx</td>
-		<td>04/02/2005</td>
-		<td>04/02/2008</td>
+	@endforeach
 
-	</tr>
 </table>
+
+{!! $alumnos->setPath('')->render()!!}
+
+@else
+<table class="table table-responsive">
+	<tr class="estilotr">
+		<td>Identificación</td>
+		<td>Nombre</td>
+		<td>Fecha vinculación</td>
+		<td>Fecha desvinculación</td>
+	</tr>
+	@foreach($busqueda as $a)
+	<tr>
+		<td>{{ $a->identificacion }}</td>
+		<td> {{ $a->nombre }} </td>
+		<td> {{ $a->fechavin }} </td>
+		<td> {{ $a->fechadesv }} </td>
+
+	</tr>
+	@endforeach
+
+</table>
+@endif
 </div>
 <div class="col-md-1"></div>
 </div>

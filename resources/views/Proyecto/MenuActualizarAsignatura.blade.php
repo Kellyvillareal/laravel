@@ -138,7 +138,7 @@
  <div class="col-md-3 col-sm-3 col-xs-2"></div>
 	<div class="container-fluid col-xs-3 col-sm-3 col-md-3"><center><a href="{{ url('actualizarasignatura') }}"><img src="Iconos/ActualizarAsignatura.svg" class="img-circle"></a><p><br><strong>Modificar Asignatura<strong></p></center></div>
 	<div class="col-xs-2 visible-xs"></div>
-	<div class="container-fluid col-xs-3 col-sm-3 col-md-3"><center><a href="{{ url('') }}"><img src="Iconos/EliminarAlumno.svg" class="img-circle"></a><p><br><strong>Eliminar Asignatura<strong></p></center></div> 
+	<div class="container-fluid col-xs-3 col-sm-3 col-md-3"><center><a href="{{ url('eliminarasignatura') }}"><img src="Iconos/EliminarAlumno.svg" class="img-circle"></a><p><br><strong>Eliminar Asignatura<strong></p></center></div> 
 	<div class="col-md-3 col-sm-3 col-xs-2"></div>
 </div>
 	<script type="text/javascript" src="{{ asset('/js/jquery.min.js') }}"></script>

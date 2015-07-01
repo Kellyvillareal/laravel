@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
-
+use App\Http\Requests\informacionalumnoRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\profesor;
 use Illuminate\Http\Request;
 
 class ExProfesoresController extends Controller {
@@ -21,7 +21,11 @@ class ExProfesoresController extends Controller {
 	
 	public function index()
 	{
-		return view("proyecto.ExProfesores");
+					$busqueda=NULL;
+		$profesores=profesor::where('estado','=','Inactivo')->paginate(8);
+
+
+		return view("proyecto.ExProfesores",compact('profesores','busqueda'));
 	}
 
 	/**
@@ -39,9 +43,15 @@ class ExProfesoresController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+public function store(informacionalumnoRequest $request)
 	{
-		//
+	$profesores=profesor::where('estado','=','Inactivo')->paginate(8);
+
+		$iden=$request->identificacion;
+$busqueda=profesor::where('identificacion','=',$iden)->where('estado','=','Inactivo')->get();
+if(count($busqueda)==0){ $busqueda=NULL;}
+
+		return view("proyecto.ExProfesores",compact('alumnos','busqueda'));
 	}
 
 	/**

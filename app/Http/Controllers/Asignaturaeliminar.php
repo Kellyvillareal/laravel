@@ -1,28 +1,23 @@
 <?php namespace App\Http\Controllers;
-use App\curso;
-use App\Http\Requests\AsignaturaRequest;
+
 use App\Http\Requests;
+use App\Http\Requests\AsignaturaR;
 use App\Http\Controllers\Controller;
 use App\asignatura;
+use App\curso;
+use App\asigvista;
 use Illuminate\Http\Request;
 
-class ExAsignaturasController extends Controller {
+class Asignaturaeliminar extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	 public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
 	public function index()
-	{		$cursos=curso::all();
-			$busqueda=NULL;
-		$asignaturas=asignatura::where('estado','=','Inactivo')->paginate(8);
-		return  view("proyecto.ExAsignaturas",compact('asignaturas','busqueda','cursos'));
+	{
+		//
 	}
 
 	/**
@@ -40,16 +35,26 @@ class ExAsignaturasController extends Controller {
 	 *
 	 * @return Response
 	 */
-public function store(AsignaturaRequest $request)
+	public function store(AsignaturaR $request)
 	{
-$asignaturas=asignatura::where('estado','=','Inactivo')->paginate(8);
-		
-		$nom=$request->nombre;
-$busqueda=asignatura::where('nombre','=',$nom)->where('estado','=','Inactivo')->get();
-if(count($busqueda)==0){ $busqueda=NULL;}
-	$cursos=curso::all();	
+		//buscamos los cursos de las asignaturas con ese nombre para quitarlas de las asignaturas vistas
+		$codigos=asignatura::where('nombre','=',$request->nombre1)->get();
+		//buscamos los idcursos en las asignaturas vistas
+		$asigvistas=asigvista::all();
+		foreach ($asigvistas as $a) {
+			foreach ($codigos as $c) {
+			if($a->codigoasig==$c->id){
+				$actualizar=asigvista::where('codigoasig','=',$c->id)->update(['estado'=>'Antigua']);
+			}
+		}
+			
+		}
 
-		return  view("proyecto.ExAsignaturas",compact('asignaturas','busqueda','cursos'));
+
+	//Actualizamos en la tabla asignaturas el estado de las asignaturas
+		$eliminar=asignatura::where('nombre','=',$request->nombre1)->update(['estado'=>'Inactivo']);
+	$asig="ELiminada";
+	return view("proyecto.EliminarAsignatura",compact('asig'));
 	}
 
 	/**

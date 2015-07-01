@@ -34,8 +34,12 @@ Route::resource('exprofesores','ExProfesoresController');
 Route::resource('exasignaturas','ExAsignaturasController');
 Route::resource('actualizaralumno','ActualizarAlumnoController');
 Route::resource('actualizarprofesor','ActualizarProfesorController');
+
 Route::resource('actualizarasignatura','ActualizarAsignaturaController');
+Route::resource('eliminarasignatura','EliminarAsignatura');
+
 Route::resource('asignarcargas','CargasAcademicasController');
+
 Route::resource('registrarnotas','RegistrarNotasController');
 Route::resource('listadoalumnos','ListadoAlumnosController');
 Route::resource('notasalumnos','NotasAlumnosController');
@@ -45,6 +49,7 @@ Route::resource('eliminaralumno','EliminarAlumnoController');
 Route::resource('menuactualizarprofesor','MenuActualizarProfesorController');
 Route::resource('eliminarprofesor','EliminarProfesorController');
 Route::resource('menuactualizarasigantura','MactualizarAcontroller');
+
 //rutas de prueba
 Route::resource('usuarios','usercontroller');
 Route::resource('prueba','pruebacontroller');
@@ -55,6 +60,7 @@ Route::resource('modificaralumno','AlumnoActualizarController');
 Route::resource('borraralumno','AlumnoEliminarController');
 Route::resource('profesoractualizar','ProfesorActualizarController');
 Route::resource('asignaturaactualizar','AsignaturaActualizar');
+Route::resource('asignaturaeliminar','Asignaturaeliminar');
 
 
 //Route::get('home', 'HomeController@index');

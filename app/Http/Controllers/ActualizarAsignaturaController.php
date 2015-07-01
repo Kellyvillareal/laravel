@@ -44,7 +44,7 @@ class ActualizarAsignaturaController extends Controller {
 	public function store(RegistrarAsignaturaRequest $request)
 	{
 		$nom=$request->nombre;
-		$consul=asignatura::where('nombre','=',$nom)->get();
+		$consul=asignatura::where('nombre','=',$nom)->where('estado','=','Activo')->get();
 		if(count($consul)>0){
 			foreach ($consul as $c) {
 				$asig=$c->nombre;

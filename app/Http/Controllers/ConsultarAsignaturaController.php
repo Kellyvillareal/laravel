@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Requests\AsignaturaRequest;;
+use App\Http\Requests\AsignaturaRequest;
 use App\Http\Controllers\Controller;
 use App\asignatura;
 use App\curso;
@@ -24,7 +24,7 @@ class ConsultarAsignaturaController extends Controller {
 	public function index()
 	{
 		$busqueda=NULL;
-		$asignaturas=asignatura::where('estado','=','Activo')->paginate(9);
+		$asignaturas=asignatura::where('estado','=','Activo')->paginate(8);
 		
 		$cursos=curso::all();
 
@@ -50,10 +50,10 @@ class ConsultarAsignaturaController extends Controller {
 	 */
 	public function store(AsignaturaRequest $request)
 	{
-$asignaturas=asignatura::where('estado','=','Activo')->paginate(9);
+$asignaturas=asignatura::where('estado','=','Activo')->paginate(8);
 		
 		$nom=$request->nombre;
-$busqueda=asignatura::where('nombre','=',$nom)->get();
+$busqueda=asignatura::where('nombre','=',$nom)->where('estado','=','Activo')->get();
 if(count($busqueda)==0){ $busqueda=NULL;}
 	$cursos=curso::all();	
 return view('proyecto.ConsultarAsignatura',compact('busqueda','cursos','asignaturas'));

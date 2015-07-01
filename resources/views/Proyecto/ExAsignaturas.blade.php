@@ -13,7 +13,7 @@
 
 <header class="row visible-lg ">
 	<div class=" col-lg-1 logo container">
-		<a href="consultardatoshistoricos">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+			<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
@@ -23,7 +23,7 @@
 		<h1 class="titulo">Ex Asignaturas</h1>
 
 </div>
-<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
+<div class="col-lg-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >
@@ -40,6 +40,8 @@
 				</ul>
 </div>
 	</header>
+
+
 	<header class="row visible-md ">
 	<div class=" col-md-1 logo container">
 		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
@@ -47,12 +49,31 @@
 			<div class=" col-md-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
-		<div class="col-md-8 container  titu">
+		<div class="col-md-6 container  titu">
 		
 		<h1 class="titulo">Ex Asignaturas</h1>
 
 </div>
+
+<div class="col-md-2 " style="height:75px; background:#2D3E50;">
+	<ul class="nav navbar-nav navbar-right">
+					@if (Auth::guest())
+					<li class="dropdown " >
+							
+						</li>
+					@else
+						<li class="dropdown cerr">
+							<a href="#" style="color:grey;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" >
+								<li><a  href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
+							</ul>
+						</li>
+					@endif
+				</ul>
+</div>
 	</header>
+
+
 		<header class="row visible-sm ">
 	<div class=" col-sm-1 logo container">
 		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
@@ -60,22 +81,59 @@
 			<div class=" col-sm-2 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
-		<div class="col-sm-9 container  titu">
+		<div class="col-sm-7 container  titu">
 		
 		<h1 class="titulo">Ex Asignaturas</h1>
 
 </div>
+
+<div class="col-sm-2 " style="height:75px; background:#2D3E50;">
+	<ul class="nav navbar-nav navbar-right">
+					@if (Auth::guest())
+					<li class="dropdown " >
+							
+						</li>
+					@else
+						<li class="dropdown cerr">
+							<a href="#" style="color:grey;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" >
+								<li><a  href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
+							</ul>
+						</li>
+					@endif
+				</ul>
+</div>
 	</header>
+
+
 		<header class="row visible-xs">
-	<div class=" col-xs-1 logo container">
+			<div class=" col-xs-1 logo container">
 		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
+	
 			<div class=" col-xs-1 logo container">
 				<img src="Iconos/logo2.svg" align="right">
 			</div>
-		<div class="col-xs-10 container titu">
+		<div class="col-xs-8 container titu">
 		
 		<h1 class="titulo">Ex Asignaturas</h1>
+</div>
+
+<div class="col-xs-2 " style="height:75px; background:#2D3E50;">
+	<ul class="nav navbar-nav navbar-right">
+					@if (Auth::guest())
+					<li class="dropdown " >
+							
+						</li>
+					@else
+						<li class="dropdown cerr">
+							<a href="#" style="color:grey;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->usuario }} <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" >
+								<li><a  href="{{ url('/auth/logout') }}">Cerrar Sesión</a></li>
+							</ul>
+						</li>
+					@endif
+				</ul>
 </div>
 	</header>
 
@@ -83,37 +141,103 @@
 <body>
 <div class="container-fluid">
 	<div class="col-md-1"></div>
-	<div class="col-md-10">
-			<div class="input-group bus">
+	 {!! Form::open( [ 'route' => 'exasignaturas.store', 'class' => 'col-md-10' ] ) !!}
+   	@if (count($errors) > 0)
+						<div class="alert alert-danger" style="margin-top:2%; font-family:Calibri;">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+		
+								@endforeach
+							</ul>
+						</div>
+					@endif
+			<div class="input-group bus" >
          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-         <input type="text" class="form-control" placeholder="Identificacion" required>
-           <span class="input-group-addon"><button id="bot">Buscar</button></span>
+       {!! Form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Nombre']) !!}
+         
+           <span class="input-group-addon"> {!! Form::button('Buscar', ['type'=>'submit', 'id'=>'bot']) !!}</span>
          </div>
-         </div>
+      
+      {!! Form::close( ) !!}
+         
     <div class="col-md-1"></div>
          </div>
 <div class="container-fluid">
 <div class="col-md-1"></div>
 <div class="col-md-10">
-<table class="table table-responsive">
+	@if($busqueda==NULL)
+<table class="table table-responsive table-condensed">
+
 	<tr class="estilotr">
 		<td>Codigo</td>
 		<td>Nombre</td>
+<td>Grado</td>
+		<td>Grupo</td>
 
 	</tr>
+		@foreach($asignaturas as $asignatura)
+
 	<tr>
-		<td>0001</td>
-		<td>Matematica</td>
+    
+		<td>{{ $asignatura->id }}</td>
+		<td>{{ $asignatura->nombre }}</td>
+@foreach($cursos as $curso)
+		@if($asignatura->idcurso==$curso->id)
+
+
+		<td>{{ $curso->grado }}</td>
+		<td>{{ $curso->grupo }}</td>
+
 
 
 	</tr>
-	<tr>
-		<td>0002</td>
-		<td>Ciencias Sociales</td>
+@endif
+@endforeach
 
-
-	</tr>
+@endforeach
 </table>
+
+{!! $asignaturas->setPath('')->render()!!}
+
+@else
+
+<table class="table table-responsive table-condensed">
+
+	<tr class="estilotr">
+		<td>Codigo</td>
+		<td>Nombre</td>
+		<td>Grado</td>
+		<td>Grupo</td>
+
+
+	</tr>
+		@foreach($busqueda as $asignatura)
+
+	<tr>
+    
+		<td>{{ $asignatura->id }}</td>
+		<td>{{ $asignatura->nombre }}</td>
+@foreach($cursos as $curso)
+		@if($asignatura->idcurso==$curso->id)
+
+
+		<td>{{ $curso->grado }}</td>
+		<td>{{ $curso->grupo }}</td>
+
+
+
+	</tr>
+@endif
+@endforeach
+
+
+@endforeach
+</table>
+
+
+
+@endif
 </div>
 <div class="col-md-1"></div>
 </div>

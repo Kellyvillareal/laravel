@@ -13,7 +13,7 @@
 
 <header class="row visible-lg ">
 	<div class=" col-lg-1 logo container">
-		<a href="consultarprofesor" >	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
+		<a href="" onclick="history.back()">	<img src="{{ asset('Iconos/atras.svg') }}" align="right"> </a>
 	</div>
 			<div class=" col-lg-3 logo container">
 				<img src="Iconos/logo2.svg" align="right">
@@ -23,7 +23,7 @@
 		<h1 class="titulo">Información profesor</h1>
 
 </div>
-<div class="col-lg-2 " style="height:75px; background:#2D3E50;">
+<div class="col-lg-2 " style="height:76px; background:#2D3E50;">
 	<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 					<li class="dropdown " >

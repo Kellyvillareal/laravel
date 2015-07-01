@@ -1,28 +1,21 @@
 <?php namespace App\Http\Controllers;
-use App\curso;
-use App\Http\Requests\AsignaturaRequest;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\asignatura;
+use App\Http\Requests\RegistrarAsignaturaRequest;
 use Illuminate\Http\Request;
-
-class ExAsignaturasController extends Controller {
+use App\asignatura;
+class EliminarAsignatura extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	 public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
 	public function index()
-	{		$cursos=curso::all();
-			$busqueda=NULL;
-		$asignaturas=asignatura::where('estado','=','Inactivo')->paginate(8);
-		return  view("proyecto.ExAsignaturas",compact('asignaturas','busqueda','cursos'));
+	{
+			$asig=NULL;
+	return view("proyecto.EliminarAsignatura",compact('asig'));
 	}
 
 	/**
@@ -40,16 +33,19 @@ class ExAsignaturasController extends Controller {
 	 *
 	 * @return Response
 	 */
-public function store(AsignaturaRequest $request)
+	public function store(RegistrarAsignaturaRequest $request)
 	{
-$asignaturas=asignatura::where('estado','=','Inactivo')->paginate(8);
-		
 		$nom=$request->nombre;
-$busqueda=asignatura::where('nombre','=',$nom)->where('estado','=','Inactivo')->get();
-if(count($busqueda)==0){ $busqueda=NULL;}
-	$cursos=curso::all();	
-
-		return  view("proyecto.ExAsignaturas",compact('asignaturas','busqueda','cursos'));
+		$consul=asignatura::where('nombre','=',$nom)->where('estado','=','Activo')->get();
+		if(count($consul)>0){
+			foreach ($consul as $c) {
+				$asig=$c->nombre;
+			}
+		}
+		else{
+			$asig="No";
+		}
+		return view("proyecto.EliminarAsignatura",compact('asig'));
 	}
 
 	/**
