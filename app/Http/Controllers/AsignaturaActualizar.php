@@ -2,29 +2,21 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegistrarAsignaturaRequest;
+use App\Http\Requests\AsignaturaR;
 use Illuminate\Http\Request;
 use App\asignatura;
-class ActualizarAsignaturaController extends Controller {
+
+class AsignaturaActualizar extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-
-
- public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-	
 	public function index()
 	{
-		$asig=NULL;
-	return view("proyecto.ActualizarAsignatura",compact('asig'));
-		}
+		//
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -41,19 +33,11 @@ class ActualizarAsignaturaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(RegistrarAsignaturaRequest $request)
+	public function store(AsignaturaR $request)
 	{
-		$nom=$request->nombre;
-		$consul=asignatura::where('nombre','=',$nom)->get();
-		if(count($consul)>0){
-			foreach ($consul as $c) {
-				$asig=$c->nombre;
-			}
-		}
-		else{
-			$asig="No";
-		}
-		return view("proyecto.ActualizarAsignatura",compact('asig'));
+	$actualizar=asignatura::where('nombre','=',$request->nombre1)->update(['nombre'=>$request->nombre]);
+	$asig="Actualizado";
+	return view("proyecto.ActualizarAsignatura",compact('asig'));
 	}
 
 	/**

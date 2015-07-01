@@ -44,6 +44,7 @@ Route::resource('menuactualizaralumno','menuactualizaralumnoController');
 Route::resource('eliminaralumno','EliminarAlumnoController');
 Route::resource('menuactualizarprofesor','MenuActualizarProfesorController');
 Route::resource('eliminarprofesor','EliminarProfesorController');
+Route::resource('menuactualizarasigantura','MactualizarAcontroller');
 //rutas de prueba
 Route::resource('usuarios','usercontroller');
 Route::resource('prueba','pruebacontroller');
@@ -53,6 +54,7 @@ Route::resource('prueba','pruebacontroller');
 Route::resource('modificaralumno','AlumnoActualizarController');
 Route::resource('borraralumno','AlumnoEliminarController');
 Route::resource('profesoractualizar','ProfesorActualizarController');
+Route::resource('asignaturaactualizar','AsignaturaActualizar');
 
 
 //Route::get('home', 'HomeController@index');

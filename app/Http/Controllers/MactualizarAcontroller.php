@@ -2,29 +2,20 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegistrarAsignaturaRequest;
+
 use Illuminate\Http\Request;
-use App\asignatura;
-class ActualizarAsignaturaController extends Controller {
+
+class MactualizarAcontroller extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-
-
- public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-	
 	public function index()
 	{
-		$asig=NULL;
-	return view("proyecto.ActualizarAsignatura",compact('asig'));
-		}
+	return view("proyecto.MenuActualizarAsignatura");
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -41,19 +32,9 @@ class ActualizarAsignaturaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(RegistrarAsignaturaRequest $request)
+	public function store()
 	{
-		$nom=$request->nombre;
-		$consul=asignatura::where('nombre','=',$nom)->get();
-		if(count($consul)>0){
-			foreach ($consul as $c) {
-				$asig=$c->nombre;
-			}
-		}
-		else{
-			$asig="No";
-		}
-		return view("proyecto.ActualizarAsignatura",compact('asig'));
+		//
 	}
 
 	/**

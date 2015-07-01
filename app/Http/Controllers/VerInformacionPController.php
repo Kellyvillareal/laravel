@@ -50,7 +50,7 @@ class VerInformacionPController extends Controller {
 		$prof='No';
 
 	$iden=$request->identificacion;
-		$info=profesor::where('identificacion','=',$iden)->get();
+		$info=profesor::where('identificacion','=',$iden)->where('estado','=','Activo')->get();
 
 ///si se encontro algo lo guardamos en un array
 foreach ($info as $profesor) {

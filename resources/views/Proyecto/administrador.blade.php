@@ -21,7 +21,7 @@
 	<div class="container-fluid col-xs-4 col-sm-3 col-md-2"><center><a href="{{ url('consultardatoshistoricos') }}"><img src="Iconos/ConsultarDatosHistoricos.svg" width="110" class="img-circle"></a><p><br><strong>Consultar Datos Historicos<strong></p></center></div>
 	<div class="container-fluid col-xs-4 col-sm-3 col-md-2"><center><a href="{{ url('menuactualizaralumno') }}"><img src="Iconos/ActualizarAlumno.svg" width="110" class="img-circle"></a><p><br><strong>Actualizar<br/>Alumno<strong></p></center></div>
 	<div class="container-fluid col-xs-4 col-sm-3 col-md-2"><center><a href="{{ url('menuactualizarprofesor') }}"><img src="Iconos/ActualizarProfesor.svg" width="110" class="img-circle"></a><p><br><strong>Actualizar<br/>Profesor<strong></p></center></div>
-	<div class="container-fluid col-xs-4 col-sm-3 col-md-2"><center><a href="{{ url('actualizarasignatura') }}"><img src="Iconos/ActualizarAsignatura.svg" width="110" class="img-circle"></a><p><br><strong>Actualizar<br/>Asignatura<strong></p></center></div>
+	<div class="container-fluid col-xs-4 col-sm-3 col-md-2"><center><a href="{{ url('menuactualizarasigantura') }}"><img src="Iconos/ActualizarAsignatura.svg" width="110" class="img-circle"></a><p><br><strong>Actualizar<br/>Asignatura<strong></p></center></div>
 	<div class="container-fluid col-xs-4 col-sm-3 col-md-2"><center><a href="{{ url('asignarcargas') }}"><img src="Iconos/AsignarCargas.svg" width="110" class="img-circle"></a><p><br><strong>Asignar Cargas Academicas<strong></p></center></div>		
 
 </div>
